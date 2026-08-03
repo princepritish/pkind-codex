@@ -1,0 +1,15 @@
+{
+  "name": "P.K. Industries",
+  "short_name": "PK Industries",
+  "description": "Manufacturer of casting powder, nozzle filling compound, refractory castable and ladle covering compound for steel melting shops.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#07090d",
+  "theme_color": "#07090d",
+  "lang": "en-IN",
+  "icons": [
+    { "src": "/img/logo1.png", "sizes": "108x75", "type": "image/png" },
+    { "src": "/favicon.ico", "sizes": "48x48", "type": "image/x-icon" }
+  ]
+}

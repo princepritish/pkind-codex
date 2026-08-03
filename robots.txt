@@ -1,4 +1,58 @@
-﻿User-agent: *
+# https://pkindustries.net/robots.txt
+
+User-agent: *
+Allow: /
+
+# --- AI / LLM crawlers -------------------------------------------------
+# Explicitly permitted so this site can be read and cited in AI answers.
+# Change Allow to Disallow for any agent you later decide to opt out of.
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: cohere-ai
 Allow: /
 
 Sitemap: https://pkindustries.net/sitemap.xml
