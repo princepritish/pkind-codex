@@ -41,6 +41,7 @@ jobs:
              exit 1
              else
              echo "ARN starts with: $(echo "${{ secrets.AWS_ROLE_ARN }}" | cut -c 1-11)"
+             echo -n "${{ secrets.AWS_ROLE_ARN }}" | wc -c
              fi
 
       - name: Configure AWS credentials (OIDC)
