@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
   var toggle = document.querySelector('.menu-toggle');
   var menu = document.querySelector('#siteMenu');
   var nav = document.querySelector('.nav');

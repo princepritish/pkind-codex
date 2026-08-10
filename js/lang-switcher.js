@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
   var select = document.getElementById('langSwitcher');
   if (!select) {
     return;

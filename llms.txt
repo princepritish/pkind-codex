@@ -1,0 +1,58 @@
+# P.K. Industries
+
+> Manufacturer, exporter and supplier of steel melting shop (SMS) consumables and
+> continuous casting machine (CCM) raw materials, based in Adityapur, Jamshedpur,
+> Jharkhand, India. Five product lines: casting powder (mould flux), nozzle filling
+> compound, refractory castable, refractory mortar, and ladle covering compound (Radex).
+
+P.K. Industries supplies steel producers across India and exports internationally.
+Grades are formulated to the customer's steel chemistry, casting route, casting speed
+and mould or ladle dimensions rather than sold as fixed catalogue items. Being located
+inside the Jamshedpur steel cluster shortens delivery lead times to producers across
+Jharkhand, West Bengal, Odisha, Chhattisgarh and Bihar.
+
+- Location: Adityapur, Jamshedpur, Jharkhand 832109, India
+- Phone / WhatsApp: +91 94313 42715
+- Email: info@pkindustries.net
+- Coverage: PAN India supply and exports
+
+## Products
+
+- [Casting Powder](https://pkindustries.net/casting-powder.html): Continuous casting mould flux for billet, bloom and slab routes. Melts into a liquid slag film that lubricates the mould-shell gap, controls horizontal heat transfer, insulates the meniscus and absorbs non-metallic inclusions.
+- [Nozzle Filling Compound](https://pkindustries.net/nozzle-filling-compound.html): Free-opening compound packed into the ladle nozzle before tapping. Resists sintering at ladle temperatures so the slide gate opens under gravity without oxygen lancing.
+- [Refractory Castable](https://pkindustries.net/castable.html): Monolithic refractory for furnace linings, ladle linings, launders and high-wear zones. Cast, pumped or gunned into place to form a jointless lining.
+- [Refractory Mortar](https://pkindustries.net/mortar.html): Dry-blend bonding mortar for refractory jointing, local patching and furnace maintenance. Supplied in 25 kg and 50 kg bags, up to 6 months shelf life in dry storage.
+- [Ladle Covering Compound (Radex)](https://pkindustries.net/ladle-covering-compound-radex.html): Low-density insulating powder spread over molten steel in the ladle to cut radiative heat loss and limit reoxidation during holding and casting.
+
+## Technical documentation
+
+- [Documentation hub](https://pkindustries.net/documentation.html): Index of all product handbooks.
+- [Casting powder handbook](https://pkindustries.net/casting-powder-docs.html): Slag film formation, basicity and crystallisation, melting rate control, defect diagnosis.
+- [Nozzle filling compound handbook](https://pkindustries.net/nozzle-filling-compound-docs.html): Free opening mechanisms, sintering behaviour, filling and storage practice.
+- [Refractory castable handbook](https://pkindustries.net/castable-docs.html): Binder systems, water addition, installation, dry-out and first heat-up schedules.
+- [Ladle covering compound handbook](https://pkindustries.net/ladle-covering-compound-docs.html): Reoxidation control, ladle heat balance, dosage and application timing.
+- [Research hub](https://pkindustries.net/research-hub.html): Peer-reviewed literature on continuous casting consumables, summarised with DOI links.
+- [Glossary](https://pkindustries.net/glossary.html): Definitions of steel melting shop and continuous casting terminology.
+- [Blog](https://pkindustries.net/blog.html): Practical articles on steel plant consumables.
+
+## Company
+
+- [SMS consumables overview](https://pkindustries.net/steel-plant-consumables-manufacturer-jharkhand-india.html): Full range and service model.
+- [Enquiry assistant](https://pkindustries.net/chatbot.html): Guided enquiry for grade selection.
+- [Sitemap](https://pkindustries.net/sitemap.html): Every page on this site.
+
+## Terminology notes
+
+Several products are known by more than one name in the industry, and these refer to
+the same material:
+
+- "Casting powder", "mould powder" and "mould flux" are the same product. "Casting
+  powder" and "mould powder" are the usual shop-floor terms in India; "mould flux" is
+  more common in academic and European literature.
+- "Ladle covering compound", "Radex" and "ladle insulating powder" are used
+  interchangeably in Indian steel plants. Radex is a trade name.
+- "NFC" is the standard abbreviation for nozzle filling compound.
+- "SMS consumables" means steel melting shop consumables; "CCM raw material" refers to
+  continuous casting machine inputs.
+- "Free opening" means a ladle opening under gravity when the slide gate is actuated,
+  without oxygen lancing to clear the nozzle.

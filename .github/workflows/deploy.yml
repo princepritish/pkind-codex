@@ -1,0 +1,92 @@
+name: Deploy to S3
+
+# Publishes the site to S3 and invalidates CloudFront.
+# Auth uses GitHub OIDC - no AWS access keys are stored in this repo.
+# One-time AWS setup is documented in infra/AWS-SETUP.md
+
+on:
+  push:
+    branches: [live]
+  workflow_dispatch:
+
+# Required for OIDC. Do not remove.
+permissions:
+  id-token: write
+  contents: read
+
+concurrency:
+  group: deploy-s3
+  cancel-in-progress: true
+
+env:
+  AWS_REGION: ap-south-1
+  BUCKET: pkindustries.net
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Full history so the sitemap can read real commit dates per file
+          fetch-depth: 0
+
+      - name: Regenerate sitemap.xml from git history
+        run: python3 tools/gen-sitemap.py
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      # Pass 1: everything, with the long-cache header.
+      # This is the only pass using --delete, so removed files are pruned.
+      - name: Sync all files
+        run: |
+          aws s3 sync . "s3://${BUCKET}" \
+            --delete \
+            --exclude ".git/*" \
+            --exclude ".github/*" \
+            --exclude "infra/*" \
+            --exclude "tools/*" \
+            --exclude "*.md" \
+            --exclude ".htaccess" \
+            --cache-control "public, max-age=31536000, immutable"
+
+      # Pass 2: re-upload HTML with a short cache so content edits go live fast.
+      # Uses cp (not sync) because sync --delete with filters can prune files
+      # that the filter excluded from the source listing.
+      - name: Fix HTML cache headers
+        run: |
+          aws s3 cp . "s3://${BUCKET}" \
+            --recursive \
+            --exclude "*" --include "*.html" \
+            --content-type "text/html; charset=utf-8" \
+            --cache-control "public, max-age=300, must-revalidate"
+
+      - name: Fix crawler-file headers
+        run: |
+          aws s3 cp robots.txt "s3://${BUCKET}/robots.txt" \
+            --content-type "text/plain; charset=utf-8" \
+            --cache-control "public, max-age=3600"
+          aws s3 cp llms.txt "s3://${BUCKET}/llms.txt" \
+            --content-type "text/plain; charset=utf-8" \
+            --cache-control "public, max-age=3600"
+          aws s3 cp sitemap.xml "s3://${BUCKET}/sitemap.xml" \
+            --content-type "application/xml; charset=utf-8" \
+            --cache-control "public, max-age=3600"
+          aws s3 cp site.webmanifest "s3://${BUCKET}/site.webmanifest" \
+            --content-type "application/manifest+json; charset=utf-8" \
+            --cache-control "public, max-age=86400"
+
+      - name: Invalidate CloudFront
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id "${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}" \
+            --paths "/*"
+
+      - name: Summary
+        run: |
+          echo "Deployed to s3://${BUCKET}" >> $GITHUB_STEP_SUMMARY
+          echo "Live at https://pkindustries.net/" >> $GITHUB_STEP_SUMMARY
