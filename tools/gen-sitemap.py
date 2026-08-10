@@ -60,9 +60,9 @@ def main():
     # Pick up blog posts automatically once blog/ exists
     if os.path.isdir("blog"):
         for name in sorted(os.listdir("blog")):
+            if name == "posts": continue
             if name.endswith(".html") and name not in EXCLUDE:
-                p = f"blog/{name}"
-                entries.append((p, "0.7" if name == "index.html" else "0.6", "monthly"))
+                entries.append((f"blog/{name}", "0.7", "monthly"))
 
     rows = []
     missing = []

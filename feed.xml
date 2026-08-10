@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>P.K. Industries - Steel Plant Consumables Blog</title>
+    <link>https://pkindustries.net/blog.html</link>
+    <atom:link href="https://pkindustries.net/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>Practical technical articles on casting powder, nozzle filling compound, refractory castable, mortar and ladle covering compound.</description>
+    <language>en-in</language>
+    <lastBuildDate>Mon, 10 Aug 2026 21:12:22 +0000</lastBuildDate>
+    <item>
+      <title>Why a Ladle Does Not Open Freely, and What to Check First</title>
+      <link>https://pkindustries.net/blog/why-ladle-does-not-open-freely.html</link>
+      <guid isPermaLink="true">https://pkindustries.net/blog/why-ladle-does-not-open-freely.html</guid>
+      <description>Free opening rate is one of the cleanest indicators of ladle practice health. Here are the four causes behind most failures, and the order to check them in.</description>
+      <pubDate>Mon, 10 Aug 2026 09:00:00 +0530</pubDate>
+    </item>
+  </channel>
+</rss>

@@ -2015,3 +2015,34 @@ body:not([data-theme="dark"]) .contact-form-note {
 .form-status.error { color: #c2410c; }
 body[data-theme="dark"] .form-status.ok { color: #34d399; }
 body[data-theme="dark"] .form-status.error { color: #ffa040; }
+
+/* Blog post layout. Body copy is constrained for readability; the tag row
+   needs its own styles here because posts do not load doc-hub.css. */
+.prose-post { max-width: 74ch; }
+.prose-post h2 { margin-top: 2.2rem; }
+.prose-post h3 { margin-top: 1.6rem; }
+.prose-post p, .prose-post li { line-height: 1.7; }
+.prose-post .doc-list { padding-left: 1.2rem; display: grid; gap: 0.5rem; }
+.post-meta {
+  margin: 0 0 1rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+.post-related { margin-top: 1.75rem; font-weight: 600; }
+.prose-post .resource-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0 1.75rem;
+  padding: 0;
+  list-style: none;
+}
+.prose-post .resource-tags span {
+  padding: 0.22rem 0.7rem;
+  border: 1px solid var(--panel-border, rgba(0,0,0,0.18));
+  border-radius: 999px;
+  font-size: 0.78rem;
+  opacity: 0.85;
+}
