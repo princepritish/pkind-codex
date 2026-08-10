@@ -10,7 +10,7 @@
 (function () {
   'use strict';
 
-  var MEASUREMENT_ID = '';
+  var MEASUREMENT_ID = 'G-7N4RQYC148';
 
   if (!MEASUREMENT_ID) return;
   if (navigator.globalPrivacyControl || navigator.doNotTrack === '1') return;
@@ -36,4 +36,11 @@
     else if (href.indexOf('tel:') === 0) gtag('event', 'phone_click');
     else if (href.indexOf('mailto:') === 0) gtag('event', 'email_click');
   });
+
+  var form = document.getElementById('inquiryForm');
+  if (form) {
+    form.addEventListener('submit', function () {
+      gtag('event', 'generate_lead', { form_id: 'inquiryForm' });
+    });
+  }
 })();
