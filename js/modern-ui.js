@@ -510,3 +510,39 @@
     });
   }
 })();
+
+/* Inquiry form: submit without leaving the page, with a visible fallback. */
+(function () {
+  var form = document.getElementById('inquiryForm');
+  if (!form) return;
+  var status = document.getElementById('formStatus');
+  var submit = form.querySelector('button[type="submit"]');
+
+  form.addEventListener('submit', function (event) {
+    if (!window.fetch) return; // let the browser do a normal POST
+    event.preventDefault();
+
+    if (status) { status.textContent = 'Sending your enquiry...'; status.className = 'form-status'; }
+    if (submit) submit.disabled = true;
+
+    window.fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { Accept: 'application/json' }
+    }).then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      form.reset();
+      if (status) {
+        status.textContent = 'Thank you. We have received your enquiry and typically reply within one working day.';
+        status.className = 'form-status ok';
+      }
+    }).catch(function () {
+      if (status) {
+        status.innerHTML = 'We could not send that automatically. Please WhatsApp ' +
+          '<a href="https://wa.me/919431342715">+91 94313 42715</a> or email ' +
+          '<a href="mailto:info@pkindustries.net">info@pkindustries.net</a>.';
+        status.className = 'form-status error';
+      }
+    }).finally(function () { if (submit) submit.disabled = false; });
+  });
+})();

@@ -1965,3 +1965,53 @@ body:not([data-theme="dark"]) .contact-form-note {
   }
 }
 
+
+/* Brand line lifted out of the <h1> so the heading leads with the product
+   keyword instead of the company name. Sized to match its previous
+   in-heading rendering, so the visual result is unchanged. */
+.hero-brand {
+  margin: 0 0 0.12em;
+  font-size: clamp(2.1rem, 1.5rem + 2.4vw, 3.4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Inquiry form - always present in the markup rather than click-to-load,
+   so crawlers see a real lead path and visitors do not pay a round trip.
+   Uses the site's own theme tokens so the fields stay visible in both
+   the light and dark themes. */
+.inquiry-form { display: grid; gap: 0.9rem; margin-top: 1rem; }
+.field-row { display: grid; gap: 0.9rem; }
+@media (min-width: 560px) { .field-row { grid-template-columns: 1fr 1fr; } }
+.inquiry-form .field { display: flex; flex-direction: column; gap: 0.35rem; min-width: 0; }
+.inquiry-form label { font-size: 0.86rem; font-weight: 600; color: var(--text); }
+.inquiry-form .req { color: #ff6a1a; }
+.inquiry-form input,
+.inquiry-form select,
+.inquiry-form textarea {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  background: var(--bg-soft, #fff);
+  border: 1px solid var(--panel-border, rgba(0, 0, 0, 0.2));
+  border-radius: 9px;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.92rem;
+}
+.inquiry-form textarea { resize: vertical; min-height: 6rem; }
+.inquiry-form input::placeholder,
+.inquiry-form textarea::placeholder { color: var(--text); opacity: 0.55; }
+.inquiry-form input:focus,
+.inquiry-form select:focus,
+.inquiry-form textarea:focus {
+  outline: 2px solid #ffa040;
+  outline-offset: 1px;
+  border-color: transparent;
+}
+.hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.form-status { margin-top: 0.6rem; font-size: 0.88rem; }
+.form-status:empty { display: none; }
+.form-status.ok { color: #2f9e6f; }
+.form-status.error { color: #c2410c; }
+body[data-theme="dark"] .form-status.ok { color: #34d399; }
+body[data-theme="dark"] .form-status.error { color: #ffa040; }
