@@ -20,7 +20,7 @@ concurrency:
 
 env:
   AWS_REGION: ap-south-1
-  BUCKET: pkindustries.net
+  BUCKET: pki.net
 
 jobs:
   deploy:
