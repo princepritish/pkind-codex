@@ -40,6 +40,15 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
 
+      - name: Test ARN Variable
+        run: |
+             if [ -z "${{ secrets.AWS_ROLE_ARN }}" ]; then
+             echo "ERROR: AWS_ROLE_ARN secret is empty!"
+             exit 1
+             else
+             echo "ARN starts with: $(echo "${{ secrets.AWS_ROLE_ARN }}" | cut -c 1-11)"
+             fi
+
       # Pass 1: everything, with the long-cache header.
       # This is the only pass using --delete, so removed files are pruned.
       - name: Sync all files
