@@ -97,6 +97,9 @@ def post_html(p, header, footer, tail):
     esc_title = html.escape(p["title"])
     esc_desc = html.escape(p["description"])
     pretty = datetime.strptime(p["date"], "%Y-%m-%d").strftime("%d %B %Y")
+    # Appending the brand to an already-long headline pushes the title past
+    # the ~60 chars Google renders, so only add it when it fits.
+    page_title = esc_title if len(p["title"]) > 45 else f"{esc_title} | PK Industries"
 
     related = ""
     if p.get("product") in PRODUCT_PAGES:
@@ -145,7 +148,7 @@ def post_html(p, header, footer, tail):
   <meta name="description" content="{esc_desc}">
   <meta name="author" content="P.K. Industries">
   <meta name="theme-color" content="#06090f">
-  <title>{esc_title} | PK INDUSTRIES</title>
+  <title>{page_title}</title>
   <link rel="canonical" href="{url}">
 
   <meta property="og:type" content="article">
