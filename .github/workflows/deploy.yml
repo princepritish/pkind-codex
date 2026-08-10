@@ -34,12 +34,6 @@ jobs:
       - name: Regenerate sitemap.xml from git history
         run: python3 tools/gen-sitemap.py
 
-      - name: Configure AWS credentials (OIDC)
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
-          aws-region: ${{ env.AWS_REGION }}
-
       - name: Test ARN Variable
         run: |
              if [ -z "${{ secrets.AWS_ROLE_ARN }}" ]; then
@@ -48,6 +42,12 @@ jobs:
              else
              echo "ARN starts with: $(echo "${{ secrets.AWS_ROLE_ARN }}" | cut -c 1-11)"
              fi
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
 
       # Pass 1: everything, with the long-cache header.
       # This is the only pass using --delete, so removed files are pruned.
