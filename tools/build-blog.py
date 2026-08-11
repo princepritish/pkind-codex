@@ -186,10 +186,14 @@ def post_html(p, header, footer, tail):
   <meta property="og:site_name" content="P.K. Industries">
   <meta property="og:title" content="{esc_title}">
   <meta property="og:description" content="{esc_desc}">
+  <meta property="og:image" content="{SITE}/img/{img_slug}.jpg">
+  <meta property="og:image:alt" content="{html.escape(img_alt)}">
   <meta property="article:published_time" content="{p['date']}">
+  <meta property="article:author" content="{AUTHOR}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{esc_title}">
   <meta name="twitter:description" content="{esc_desc}">
+  <meta name="twitter:image" content="{SITE}/img/{img_slug}.jpg">
 
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="/img/logo1.png">
@@ -281,9 +285,9 @@ def update_index(posts):
             mins = max(1, round(words / 200))
             date = datetime.strptime(p["date"], "%Y-%m-%d").strftime("%d %b %Y")
             return f'''        <article class="post-card reveal">
-          <a class="post-card-media" href="blog/{p["slug"]}.html" tabindex="-1" aria-hidden="true">
+          <div class="post-card-media">
             <img src="img/{img_slug}.jpg" alt="" width="640" height="360" loading="lazy" decoding="async">
-          </a>
+          </div>
           <div class="post-card-body">
             <p class="post-card-meta"><time datetime="{p["date"]}">{date}</time> &middot; {mins} min read</p>
             <h3><a href="blog/{p["slug"]}.html">{html.escape(p["title"])}</a></h3>

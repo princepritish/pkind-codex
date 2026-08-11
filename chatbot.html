@@ -101,7 +101,7 @@
         <form class="panel chat-form reveal" id="assistantForm" action="https://formkeep.com/p/2ce995099e550113ca55248b19ce63ea" method="POST" target="formkeepSubmitFrame">
           <h2>Requirement Details</h2>
           <input type="hidden" name="source" value="PK Industries Enquiry Assistant">
-          <textarea class="hidden-field" id="formkeepMessage" name="message" aria-hidden="true" tabindex="-1"></textarea>
+          <textarea class="hidden-field" id="formkeepMessage" aria-label="Your enquiry message" name="message" aria-hidden="true" tabindex="-1"></textarea>
           <label>
             Product
             <select id="productName" name="product" required>
@@ -145,7 +145,7 @@
         <article class="panel reveal">
           <h2>Generated Message</h2>
           <p class="contact-form-note">After submission, you can also send the same message on WhatsApp for faster follow-up.</p>
-          <textarea class="message-preview" id="messagePreview" rows="13" readonly>Fill the form to generate an enquiry message.</textarea>
+          <textarea class="message-preview" id="messagePreview" aria-label="Preview of the enquiry message that will be sent" rows="13" readonly>Fill the form to generate an enquiry message.</textarea>
           <div class="chat-actions">
             <button class="btn btn-ghost" type="button" id="copyMessage">Copy Message</button>
             <a class="btn btn-primary" href="mailto:info@pkindustries.net?subject=Product%20Requirement%20for%20PK%20Industries">Email PK Industries</a>

@@ -40,45 +40,444 @@
   <link rel="stylesheet" href="css/doc-hub.css">
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebPage",
-        "@id": "https://pkindustries.net/research-hub.html#webpage",
-        "url": "https://pkindustries.net/research-hub.html",
-        "name": "Research Hub | P.K. Industries",
-        "description": "Research library and documentation hub for casting powder, nozzle filling compound, refractory castable, and ladle covering compound.",
-        "isPartOf": {
-          "@type": "WebSite",
-          "@id": "https://pkindustries.net/#website"
-        }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://pkindustries.net/research-hub.html#breadcrumb",
-        "itemListElement": [
-          {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://pkindustries.net/"},
-          {"@type": "ListItem", "position": 2, "name": "Research Hub", "item": "https://pkindustries.net/research-hub.html"}
-        ]
-      },
-      {
-        "@type": "CollectionPage",
-        "@id": "https://pkindustries.net/research-hub.html#collection",
-        "name": "P.K. Industries Research and Documentation Hub",
-        "about": [
-          {"@type": "Thing", "name": "Casting Powder"},
-          {"@type": "Thing", "name": "Nozzle Filling Compound"},
-          {"@type": "Thing", "name": "Refractory Castable"},
-          {"@type": "Thing", "name": "Ladle Covering Compound"}
-        ],
-        "isPartOf": {
-          "@type": "WebSite",
-          "@id": "https://pkindustries.net/#website"
-        }
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://pkindustries.net/research-hub.html#webpage",
+      "url": "https://pkindustries.net/research-hub.html",
+      "name": "Research Hub | P.K. Industries",
+      "description": "Research library and documentation hub for casting powder, nozzle filling compound, refractory castable, and ladle covering compound.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://pkindustries.net/#website"
       }
-    ]
-  }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://pkindustries.net/research-hub.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://pkindustries.net/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Research Hub",
+          "item": "https://pkindustries.net/research-hub.html"
+        }
+      ]
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://pkindustries.net/research-hub.html#collection",
+      "name": "P.K. Industries Research and Documentation Hub",
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Casting Powder"
+        },
+        {
+          "@type": "Thing",
+          "name": "Nozzle Filling Compound"
+        },
+        {
+          "@type": "Thing",
+          "name": "Refractory Castable"
+        },
+        {
+          "@type": "Thing",
+          "name": "Ladle Covering Compound"
+        }
+      ],
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://pkindustries.net/#website"
+      },
+      "mainEntity": {
+        "@id": "https://pkindustries.net/research-hub.html#research-library"
+      }
+    },
+    {
+      "@type": "Collection",
+      "@id": "https://pkindustries.net/research-hub.html#research-library",
+      "name": "Continuous casting consumables research library",
+      "description": "Peer-reviewed literature on casting powder, nozzle filling compound, refractory castable and ladle covering compound, summarised with DOI links.",
+      "url": "https://pkindustries.net/research-hub.html",
+      "inLanguage": "en-IN",
+      "publisher": {
+        "@id": "https://pkindustries.net/#organization"
+      },
+      "numberOfItems": 24,
+      "hasPart": [
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "Effects of Tundish Cover Powder and Teeming Stream on Oxidation Rate of Molten Steel in Tundish",
+          "name": "Effects of Tundish Cover Powder and Teeming Stream on Oxidation Rate of Molten Steel in Tundish",
+          "url": "https://doi.org/10.2355/isijinternational.38.332",
+          "datePublished": "1998",
+          "abstract": "Quantifies how tundish cover powder and teeming conditions influence oxidation rate, with a mass transfer model for steel reoxidation control.",
+          "publication": "ISIJ International",
+          "sameAs": "https://doi.org/10.2355/isijinternational.38.332",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "DOI",
+            "value": "10.2355/isijinternational.38.332"
+          }
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "Reoxidation Behavior of Molten Steel in Tundish",
+          "name": "Reoxidation Behavior of Molten Steel in Tundish",
+          "url": "https://doi.org/10.2355/isijinternational.40.40",
+          "datePublished": "2000",
+          "abstract": "Quantifies reoxidation contributions in tundish practice and evaluates oxidation by air using reaction rate modeling.",
+          "publication": "ISIJ International",
+          "sameAs": "https://doi.org/10.2355/isijinternational.40.40",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "DOI",
+            "value": "10.2355/isijinternational.40.40"
+          }
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "Castable Refractory Concretes",
+          "name": "Castable Refractory Concretes",
+          "url": "https://doi.org/10.1179/095066001101528439",
+          "datePublished": "2001",
+          "abstract": "Comprehensive review of castable evolution from high cement to low and cement free systems, linking processing to microstructure and performance.",
+          "publication": "International Materials Reviews",
+          "sameAs": "https://doi.org/10.1179/095066001101528439",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "DOI",
+            "value": "10.1179/095066001101528439"
+          }
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "The Role of Mould Fluxes in Continuous Casting - So Simple Yet So Complex",
+          "name": "The Role of Mould Fluxes in Continuous Casting - So Simple Yet So Complex",
+          "url": "https://doi.org/10.2355/isijinternational.43.1479",
+          "datePublished": "2003",
+          "abstract": "Explains core mould flux functions and property targets for lubrication and heat transfer, with emphasis on defect control challenges.",
+          "publication": "ISIJ International",
+          "sameAs": "https://doi.org/10.2355/isijinternational.43.1479",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "DOI",
+            "value": "10.2355/isijinternational.43.1479"
+          }
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "Performance and Properties of Mould Fluxes",
+          "name": "Performance and Properties of Mould Fluxes",
+          "url": "https://doi.org/10.1179/174328105X15788",
+          "datePublished": "2005",
+          "abstract": "Reviews how mould flux physical properties and chemistry influence slag behavior, lubrication, and surface quality in continuous casting.",
+          "publication": "Ironmaking and Steelmaking",
+          "sameAs": "https://doi.org/10.1179/174328105X15788",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "DOI",
+            "value": "10.1179/174328105X15788"
+          }
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "Solidification Properties of CaO-SiO2-TiO2 Based Mold Fluxes for Continuous Casting of Steels",
+          "name": "Solidification Properties of CaO-SiO2-TiO2 Based Mold Fluxes for Continuous Casting of Steels",
+          "url": "https://doi.org/10.1016/S1006-706X(11)60084-8",
+          "datePublished": "2011",
+          "abstract": "Studies solidification and crystallization behavior of CaO-SiO2-TiO2 fluxes as fluorine reduced systems for continuous casting.",
+          "publication": "Journal of Iron and Steel Research International",
+          "sameAs": "https://doi.org/10.1016/S1006-706X(11)60084-8",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "DOI",
+            "value": "10.1016/S1006-706X(11)60084-8"
+          }
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "Effect of Chromite Silica Sands Characteristics on Performance of Ladle Filler Sands for Continuous Casting",
+          "name": "Effect of Chromite Silica Sands Characteristics on Performance of Ladle Filler Sands for Continuous Casting",
+          "url": "https://doi.org/10.1016/S1006-706X(12)60066-1",
+          "datePublished": "2012",
+          "abstract": "Links chromite silica sand characteristics with sintering, flowability, and permeability impacts on free opening performance.",
+          "publication": "Journal of Iron and Steel Research International",
+          "sameAs": "https://doi.org/10.1016/S1006-706X(12)60066-1",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "DOI",
+            "value": "10.1016/S1006-706X(12)60066-1"
+          }
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "Refractory Filler Sands with Core Shell Composite Structure for the Taphole Nozzle in Slide Gate System of Steel Ladles",
+          "name": "Refractory Filler Sands with Core Shell Composite Structure for the Taphole Nozzle in Slide Gate System of Steel Ladles",
+          "url": "https://doi.org/10.1016/j.ceramint.2011.08.017",
+          "datePublished": "2012",
+          "abstract": "Introduces core shell composite filler sands to tune sintering behavior and improve free opening for slide gate nozzles.",
+          "publication": "Ceramics International",
+          "sameAs": "https://doi.org/10.1016/j.ceramint.2011.08.017",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "DOI",
+            "value": "10.1016/j.ceramint.2011.08.017"
+          }
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "Sintering Behavior of Silica Sand for the Filler Sand in Continuous Casting Process",
+          "name": "Sintering Behavior of Silica Sand for the Filler Sand in Continuous Casting Process",
+          "url": "https://doi.org/10.2355/isijinternational.54.1823",
+          "datePublished": "2014",
+          "abstract": "Explores sintering behavior of silica filler sands and how phase formation influences free opening reliability.",
+          "publication": "ISIJ International",
+          "sameAs": "https://doi.org/10.2355/isijinternational.54.1823",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "DOI",
+            "value": "10.2355/isijinternational.54.1823"
+          }
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "Free Opening Performance of Steel Ladle as a Function of Filler Sand Properties",
+          "name": "Free Opening Performance of Steel Ladle as a Function of Filler Sand Properties",
+          "url": "https://doi.org/10.1590/1980-5373-MR-2015-0359",
+          "datePublished": "2016",
+          "abstract": "Connects filler sand composition and particle size with free opening rates in ladle practice.",
+          "publication": "Materials Research",
+          "sameAs": "https://doi.org/10.1590/1980-5373-MR-2015-0359",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "DOI",
+            "value": "10.1590/1980-5373-MR-2015-0359"
+          }
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "Effect of Rice Husk Ash Insulation Powder on the Reoxidation Behavior of Molten Steel in Continuous Casting Tundish",
+          "name": "Effect of Rice Husk Ash Insulation Powder on the Reoxidation Behavior of Molten Steel in Continuous Casting Tundish",
+          "url": "https://doi.org/10.1007/s11663-017-0971-3",
+          "datePublished": "2017",
+          "abstract": "Evaluates rice husk ash insulation powder and its influence on reoxidation, inclusion formation, and refractory interaction.",
+          "publication": "Metallurgical and Materials Transactions B",
+          "sameAs": "https://doi.org/10.1007/s11663-017-0971-3",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "DOI",
+            "value": "10.1007/s11663-017-0971-3"
+          }
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "Reoxidation of Al-Killed Steel by Cr2O3 from Tundish Cover Flux",
+          "name": "Reoxidation of Al-Killed Steel by Cr2O3 from Tundish Cover Flux",
+          "url": "https://doi.org/10.3390/met9050554",
+          "datePublished": "2019",
+          "abstract": "Shows how Cr2O3-bearing cover flux can drive reoxidation and aluminum loss in Al-killed steel.",
+          "publication": "Metals",
+          "sameAs": "https://doi.org/10.3390/met9050554",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "DOI",
+            "value": "10.3390/met9050554"
+          }
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "A Review of Fluorine Free Mold Flux Development",
+          "name": "A Review of Fluorine Free Mold Flux Development",
+          "url": "https://doi.org/10.2355/isijinternational.ISIJINT-2018-232",
+          "datePublished": "2018",
+          "abstract": "Reviews fluorine free mold flux strategies, substitute oxides, and the tradeoffs for viscosity, crystallization, and heat transfer.",
+          "publication": "ISIJ International",
+          "sameAs": "https://doi.org/10.2355/isijinternational.ISIJINT-2018-232",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "DOI",
+            "value": "10.2355/isijinternational.ISIJINT-2018-232"
+          }
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "Research Overview of Formation and Heat Transfer of Slag Film in Mold During Continuous Casting",
+          "name": "Research Overview of Formation and Heat Transfer of Slag Film in Mold During Continuous Casting",
+          "url": "https://doi.org/10.13374/j.issn2095-9389.2019.01.002",
+          "datePublished": "2019",
+          "abstract": "Summarizes slag film formation and heat transfer mechanisms in the mold, including measurement and modeling approaches.",
+          "publication": "Chinese Journal of Engineering",
+          "sameAs": "https://doi.org/10.13374/j.issn2095-9389.2019.01.002",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "DOI",
+            "value": "10.13374/j.issn2095-9389.2019.01.002"
+          }
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "Interaction Between Ti Bearing Ultra Low Carbon Steel and Mold Flux During Continuous Casting",
+          "name": "Interaction Between Ti Bearing Ultra Low Carbon Steel and Mold Flux During Continuous Casting",
+          "url": "https://doi.org/10.1051/metal/2019023",
+          "datePublished": "2019",
+          "abstract": "Examines interactions between Ti bearing steels and mold flux that can alter flux composition and inclusion behavior.",
+          "publication": "Metallurgical Research and Technology",
+          "sameAs": "https://doi.org/10.1051/metal/2019023",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "DOI",
+            "value": "10.1051/metal/2019023"
+          }
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "Improvement in Slag Resistance of No Cement Refractory Castables by Matrix Design",
+          "name": "Improvement in Slag Resistance of No Cement Refractory Castables by Matrix Design",
+          "url": "https://doi.org/10.3390/ceramics3010004",
+          "datePublished": "2020",
+          "abstract": "Compares matrix designs in no cement castables and their influence on slag resistance and microstructure.",
+          "publication": "Ceramics",
+          "sameAs": "https://doi.org/10.3390/ceramics3010004",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "DOI",
+            "value": "10.3390/ceramics3010004"
+          }
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "Mixing Effect of Slag Compositions and Additives on Crystallization of Mold Fluxes for Casting Ti Bearing Steels",
+          "name": "Mixing Effect of Slag Compositions and Additives on Crystallization of Mold Fluxes for Casting Ti Bearing Steels",
+          "url": "https://doi.org/10.1016/j.jmrt.2020.12.106",
+          "datePublished": "2021",
+          "abstract": "Investigates how TiO2, basicity, and additives affect crystallization and heat transfer behavior for Ti bearing steel casting.",
+          "publication": "Journal of Materials Research and Technology",
+          "sameAs": "https://doi.org/10.1016/j.jmrt.2020.12.106",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "DOI",
+            "value": "10.1016/j.jmrt.2020.12.106"
+          }
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "Influence of Colloidal Silica on Final Properties of No Cement Castables",
+          "name": "Influence of Colloidal Silica on Final Properties of No Cement Castables",
+          "url": "https://doi.org/10.4028/www.scientific.net/SSP.321.125",
+          "datePublished": "2021",
+          "abstract": "Analyzes how colloidal silica affects setting and mechanical properties in no cement castables.",
+          "publication": "Solid State Phenomena",
+          "sameAs": "https://doi.org/10.4028/www.scientific.net/SSP.321.125",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "DOI",
+            "value": "10.4028/www.scientific.net/SSP.321.125"
+          }
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "Effect of Silica Concentration on Degree of Sintering of Chromite Silica Ladle Well Filler Sand for Free Opening Performance",
+          "name": "Effect of Silica Concentration on Degree of Sintering of Chromite Silica Ladle Well Filler Sand for Free Opening Performance",
+          "url": "https://doi.org/10.17159/2411-9717/1535/2022",
+          "datePublished": "2022",
+          "abstract": "Quantifies how silica concentration changes sintering behavior and free opening performance of chromite silica filler sand.",
+          "publication": "Journal of the Southern African Institute of Mining and Metallurgy",
+          "sameAs": "https://doi.org/10.17159/2411-9717/1535/2022",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "DOI",
+            "value": "10.17159/2411-9717/1535/2022"
+          }
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "Geopolymers: A Viable Binder Option for Ultra Low Cement and Cement Free Refractory Castables",
+          "name": "Geopolymers: A Viable Binder Option for Ultra Low Cement and Cement Free Refractory Castables",
+          "url": "https://doi.org/10.1016/j.jeurceramsoc.2024.02.013",
+          "datePublished": "2024",
+          "abstract": "Evaluates geopolymer binders as alternative systems for ultra low cement and cement free castables.",
+          "publication": "Journal of the European Ceramic Society",
+          "sameAs": "https://doi.org/10.1016/j.jeurceramsoc.2024.02.013",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "DOI",
+            "value": "10.1016/j.jeurceramsoc.2024.02.013"
+          }
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "Design and Analysis of Fluorine Free Mold Fluxes for Continuous Casting of Peritectic Steels",
+          "name": "Design and Analysis of Fluorine Free Mold Fluxes for Continuous Casting of Peritectic Steels",
+          "url": "https://doi.org/10.3390/ma17235947",
+          "datePublished": "2024",
+          "abstract": "Designs fluorine free fluxes for peritectic steels and compares melting behavior and viscosity based on raw material routes.",
+          "publication": "Materials",
+          "sameAs": "https://doi.org/10.3390/ma17235947",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "DOI",
+            "value": "10.3390/ma17235947"
+          }
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "Effect of Al2O3 SiO2 Ratio on Structure and Properties of Mold Flux for High Al Steel Continuous Casting",
+          "name": "Effect of Al2O3 SiO2 Ratio on Structure and Properties of Mold Flux for High Al Steel Continuous Casting",
+          "url": "https://doi.org/10.1007/s40831-025-01018-1",
+          "datePublished": "2025",
+          "abstract": "Links Al2O3 SiO2 ratio to structure, viscosity, crystallization, and heat transfer behavior for high Al steel casting.",
+          "publication": "Journal of Sustainable Metallurgy",
+          "sameAs": "https://doi.org/10.1007/s40831-025-01018-1",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "DOI",
+            "value": "10.1007/s40831-025-01018-1"
+          }
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "Influence of Tundish Flux on Reoxidation Behavior of Al Killed Ti Stabilized Stainless Steel",
+          "name": "Influence of Tundish Flux on Reoxidation Behavior of Al Killed Ti Stabilized Stainless Steel",
+          "url": "https://doi.org/10.1016/j.jmrt.2025.01.110",
+          "datePublished": "2025",
+          "abstract": "Compares tundish flux compositions and their effect on reoxidation behavior of Al killed Ti stabilized stainless steel.",
+          "publication": "Journal of Materials Research and Technology",
+          "sameAs": "https://doi.org/10.1016/j.jmrt.2025.01.110",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "DOI",
+            "value": "10.1016/j.jmrt.2025.01.110"
+          }
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "Effect of Tundish Fluxes on the Degradation of MgO Based Refractory Linings in Continuous Casting Process",
+          "name": "Effect of Tundish Fluxes on the Degradation of MgO Based Refractory Linings in Continuous Casting Process",
+          "url": "https://doi.org/10.1016/j.jmrt.2025.09.274",
+          "datePublished": "2025",
+          "abstract": "Assesses how tundish flux chemistry affects degradation of MgO based refractory linings in continuous casting.",
+          "publication": "Journal of Materials Research and Technology",
+          "sameAs": "https://doi.org/10.1016/j.jmrt.2025.09.274",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "DOI",
+            "value": "10.1016/j.jmrt.2025.09.274"
+          }
+        }
+      ]
+    }
+  ]
+}
   </script>
 </head>
 <body>

@@ -2128,3 +2128,46 @@ body[data-theme="dark"] .form-status.error { color: #ffa040; }
   letter-spacing: 0.04em;
   opacity: 0.75;
 }
+
+/* ---------------------------------------------------------------------
+   Tap target sizing (WCAG 2.5.8 asks for 24x24 CSS px minimum).
+   Inline text links in the footer and the "read more" links were rendering
+   at ~18px tall on mobile, so they get vertical padding rather than a
+   larger font, which would change the design.
+   --------------------------------------------------------------------- */
+@media (max-width: 760px) {
+  .footer-links a,
+  .product-link,
+  .doc-list a,
+  .breadcrumb a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+    padding-block: 3px;
+  }
+  .footer-links { row-gap: 0.25rem; }
+}
+
+/* One link per card: the heading link covers the card, so the image is not a
+   second, duplicate link to the same URL with no accessible name. */
+.post-card { position: relative; }
+.post-card-body h3 a::after { content: ""; position: absolute; inset: 0; }
+
+/* Remaining sub-24px targets: DOI links in the research hub, paper titles
+   that wrap to a single short line, and inline prose links. */
+@media (max-width: 760px) {
+  .resource-links a,
+  .resource-card h3 a,
+  .post-related a,
+  .prose-post p > a,
+  .contact-list a,
+  .contact-item a,
+  .form-fallback a,
+  .reference-list a,
+  .cite a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+    padding-block: 2px;
+  }
+}
