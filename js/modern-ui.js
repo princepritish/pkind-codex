@@ -546,3 +546,19 @@
     }).finally(function () { if (submit) submit.disabled = false; });
   });
 })();
+
+/* Respect prefers-reduced-motion for the ambient plant loop. CSS cannot pause
+   a video, so stop it here and expose controls instead of removing it. */
+(function () {
+  if (!window.matchMedia) return;
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var loops = document.querySelectorAll('.video-lead video[autoplay]');
+  Array.prototype.forEach.call(loops, function (video) {
+    video.autoplay = false;
+    video.loop = false;
+    video.controls = true;
+    video.removeAttribute('tabindex');
+    video.pause();
+  });
+})();
