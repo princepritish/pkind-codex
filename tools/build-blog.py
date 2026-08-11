@@ -30,6 +30,19 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 POSTS_DIR = os.path.join(ROOT, "blog", "posts")
 OUT_DIR = os.path.join(ROOT, "blog")
 
+AUTHOR = "Vision PK INDUSTRIES"
+
+# Each post gets a lead image matched to its product, so posts do not all
+# share one photo. Override per post with "image:" in the meta block.
+PRODUCT_IMAGES = {
+    "casting-powder": ("casting-powder-hero", "Casting powder feeding onto the mould meniscus"),
+    "nozzle-filling-compound": ("nfc-hero", "Nozzle filling compound for ladle slide gate free opening"),
+    "castable": ("castable-thumb", "Refractory castable lining material"),
+    "mortar": ("mortar-rs", "Refractory mortar for jointing and patching"),
+    "ladle-covering-compound": ("radex-thumb", "Ladle covering compound insulating the steel surface"),
+}
+DEFAULT_IMAGE = ("goal-strong-shining-billets", "Freshly cast steel billets")
+
 PRODUCT_PAGES = {
     "casting-powder": ("Casting Powder", "casting-powder.html"),
     "nozzle-filling-compound": ("Nozzle Filling Compound", "nozzle-filling-compound.html"),
@@ -101,6 +114,19 @@ def post_html(p, header, footer, tail):
     # the ~60 chars Google renders, so only add it when it fits.
     page_title = esc_title if len(p["title"]) > 45 else f"{esc_title} | PK Industries"
 
+    words = len(re.sub(r"<[^>]+>", " ", p["body"]).split())
+    minutes = max(1, round(words / 200))
+
+    img_slug, img_alt = PRODUCT_IMAGES.get(p.get("product"), DEFAULT_IMAGE)
+    if p.get("image"):
+        img_slug = p["image"]
+    if p.get("image_alt"):
+        img_alt = p["image_alt"]
+    hero_img = (f'      <figure class="post-hero">\n'
+                f'        <img src="../img/{img_slug}.jpg" alt="{html.escape(img_alt)}" '
+                f'width="960" height="540" fetchpriority="high" decoding="async">\n'
+                f'      </figure>')
+
     related = ""
     if p.get("product") in PRODUCT_PAGES:
         name, page = PRODUCT_PAGES[p["product"]]
@@ -123,10 +149,13 @@ def post_html(p, header, footer, tail):
   "datePublished": "{p['date']}",
   "dateModified": "{p['date']}",
   "inLanguage": "en-IN",
-  "author": {{ "@id": "{SITE}/#organization" }},
+  "author": {{ "@type": "Organization", "name": "{AUTHOR}", "url": "{SITE}/about" }},
   "publisher": {{ "@id": "{SITE}/#organization" }},
   "isPartOf": {{ "@type": "Blog", "@id": "{SITE}/blog.html" }},
-  "mainEntityOfPage": "{url}"
+  "mainEntityOfPage": "{url}",
+  "image": "{SITE}/img/{img_slug}.jpg",
+  "wordCount": {words},
+  "timeRequired": "PT{minutes}M"
 }}'''.replace("'", '"')
 
     crumbs = f'''{{
@@ -186,7 +215,17 @@ def post_html(p, header, footer, tail):
       <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../blog.html">Blog</a><span>/</span><span aria-current="page">{esc_title}</span></nav>
       <p class="eyebrow">Technical article</p>
       <h1>{esc_title}</h1>
-      <p class="post-meta"><time datetime="{p['date']}">{pretty}</time></p>
+
+      <div class="post-byline">
+        <img class="post-avatar" src="../img/logo1.png" alt="" width="40" height="40" aria-hidden="true">
+        <div>
+          <span class="post-author">{AUTHOR}</span>
+          <span class="post-sub"><time datetime="{p['date']}">{pretty}</time> &middot; {minutes} min read</span>
+        </div>
+      </div>
+
+{hero_img}
+
       <p class="lead">{esc_desc}</p>{tags}
 
 {p['body']}
@@ -234,19 +273,41 @@ def update_index(posts):
     if not posts:
         cards = '<p class="notice">New articles are published here regularly.</p>'
     else:
-        cards = "\n".join(
-            f'''        <article class="doc-card reveal">
-          <div class="doc-meta"><span>{datetime.strptime(p["date"], "%Y-%m-%d").strftime("%d %b %Y")}</span></div>
-          <h3><a href="blog/{p["slug"]}.html">{html.escape(p["title"])}</a></h3>
-          <p>{html.escape(p["description"])}</p>
-          <a class="product-link" href="blog/{p["slug"]}.html">Read article</a>
-        </article>''' for p in posts)
+        def card(p):
+            img_slug, img_alt = PRODUCT_IMAGES.get(p.get("product"), DEFAULT_IMAGE)
+            if p.get("image"):
+                img_slug = p["image"]
+            words = len(re.sub(r"<[^>]+>", " ", p["body"]).split())
+            mins = max(1, round(words / 200))
+            date = datetime.strptime(p["date"], "%Y-%m-%d").strftime("%d %b %Y")
+            return f'''        <article class="post-card reveal">
+          <a class="post-card-media" href="blog/{p["slug"]}.html" tabindex="-1" aria-hidden="true">
+            <img src="img/{img_slug}.jpg" alt="" width="640" height="360" loading="lazy" decoding="async">
+          </a>
+          <div class="post-card-body">
+            <p class="post-card-meta"><time datetime="{p["date"]}">{date}</time> &middot; {mins} min read</p>
+            <h3><a href="blog/{p["slug"]}.html">{html.escape(p["title"])}</a></h3>
+            <p>{html.escape(p["description"])}</p>
+            <p class="post-card-author">{AUTHOR}</p>
+          </div>
+        </article>'''
+        cards = "\n".join(card(p) for p in posts)
 
-    block = (f'      <!--POSTS-->\n      <div class="doc-grid">\n{cards}\n      </div>\n      <!--/POSTS-->')
+    block = ('  <!--POSTS-->\n'
+             '  <section class="section shell" id="articles">\n'
+             '    <div class="section-heading reveal">\n'
+             '      <p class="eyebrow">Latest articles</p>\n'
+             '      <h2>Technical notes from the plant floor.</h2>\n'
+             '    </div>\n'
+             f'    <div class="post-grid">\n{cards}\n    </div>\n'
+             '  </section>\n'
+             '  <!--/POSTS-->')
     if "<!--POSTS-->" in src:
-        src = re.sub(r"      <!--POSTS-->.*?<!--/POSTS-->", block, src, flags=re.S)
+        src = re.sub(r"[ \t]*<!--POSTS-->.*?<!--/POSTS-->", block, src, flags=re.S)
     else:
-        src = src.replace("</main>", block + "\n  </main>", 1)
+        # Lead with the articles rather than burying them under the static
+        # sections that predate the blog having real posts.
+        src = re.sub(r"(<main[^>]*>)", r"\1\n" + block.replace("\\", "\\\\"), src, count=1)
 
     entries = ",\n      ".join(
         f'{{"@type": "BlogPosting", "headline": "{html.escape(p["title"])}", '
