@@ -1326,7 +1326,7 @@ a:hover {
   .section,
   .site-footer {
     content-visibility: auto;
-    contain-intrinsic-size: 1px 880px;
+    contain-intrinsic-size: auto 880px;
   }
 }
 
@@ -2089,9 +2089,13 @@ body[data-theme="dark"] .form-status.error { color: #ffa040; }
 /* Index cards */
 .post-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  /* auto-fit, not auto-fill: with one or two posts the cards expand to fill
+     the row instead of leaving empty phantom columns beside them. */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
   gap: 1.5rem;
 }
+/* Cap the card width so a single post does not stretch across the full page */
+.post-grid:has(> :only-child) { grid-template-columns: minmax(0, 640px); }
 .post-card {
   display: flex;
   flex-direction: column;
