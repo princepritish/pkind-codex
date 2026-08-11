@@ -2193,3 +2193,16 @@ body[data-theme="dark"] .form-status.error { color: #ffa040; }
     padding-block: 2px;
   }
 }
+
+/* Footer NAP. Name, address and phone in a consistent, crawlable block is a
+   basic local-search signal, and the footer is where people look for it. */
+.footer-nap {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.footer-nap a {
+  color: inherit;
+}

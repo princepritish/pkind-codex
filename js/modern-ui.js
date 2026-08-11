@@ -236,63 +236,9 @@
       var chatbotFloating = document.createElement('a');
       chatbotFloating.className = 'chatbot-float';
       chatbotFloating.href = 'chatbot.html';
-      chatbotFloating.setAttribute('aria-label', 'Open Chatbot');
+      chatbotFloating.setAttribute('aria-label', 'Get a quote');
       chatbotFloating.innerHTML = '<span class="fab-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="M4 12.2c0-4.42 3.72-8 8.3-8 4.58 0 8.3 3.58 8.3 8s-3.72 8-8.3 8c-.88 0-1.72-.13-2.5-.37L5.1 21.8l1.16-4.33A7.7 7.7 0 0 1 4 12.2Zm8.3-5.7c-3.26 0-5.9 2.55-5.9 5.7 0 1.63.71 3.1 1.85 4.14l.46.42-.51 1.9 2.09-.88.39.13c.73.24 1.5.36 2.32.36 3.26 0 5.9-2.55 5.9-5.7s-2.64-5.7-5.9-5.7Zm-3.27 5.7a1.07 1.07 0 1 1 0-2.13 1.07 1.07 0 0 1 0 2.13Zm3.27 0a1.07 1.07 0 1 1 0-2.13 1.07 1.07 0 0 1 0 2.13Zm3.27 0a1.07 1.07 0 1 1 0-2.13 1.07 1.07 0 0 1 0 2.13Z"/></svg></span>';
       waFloating.parentNode.insertBefore(chatbotFloating, waFloating);
-    }
-  }
-
-  function loadScript(src) {
-    return new Promise(function (resolve, reject) {
-      if (document.querySelector('script[src="' + src + '"]')) {
-        resolve();
-        return;
-      }
-
-      var script = document.createElement('script');
-      script.src = src;
-      script.async = true;
-      script.onload = function () { resolve(); };
-      script.onerror = function () { reject(new Error('Failed to load ' + src)); };
-      document.body.appendChild(script);
-    });
-  }
-
-  var formEmbed = document.getElementById('formkeep-embed');
-  var loadInquiryBtn = document.getElementById('loadInquiryBtn');
-  if (formEmbed) {
-    var formScriptsLoaded = false;
-    var loadFormScripts = function () {
-      if (formScriptsLoaded) {
-        return;
-      }
-
-      formScriptsLoaded = true;
-      if (loadInquiryBtn) {
-        loadInquiryBtn.disabled = true;
-        loadInquiryBtn.textContent = 'Loading Form...';
-      }
-
-      loadScript('https://pym.nprapps.org/pym.v1.min.js')
-        .then(function () {
-          return loadScript('https://formkeep-production-herokuapp-com.global.ssl.fastly.net/formkeep-embed.js');
-        })
-        .then(function () {
-          if (loadInquiryBtn) {
-            loadInquiryBtn.textContent = 'Inquiry Form Loaded';
-          }
-        })
-        .catch(function () {
-          if (loadInquiryBtn) {
-            loadInquiryBtn.disabled = false;
-            loadInquiryBtn.textContent = 'Retry Loading Form';
-          }
-          // Keep fallback link available if third-party scripts fail.
-        });
-    };
-
-    if (loadInquiryBtn) {
-      loadInquiryBtn.addEventListener('click', loadFormScripts);
     }
   }
 

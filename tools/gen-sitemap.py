@@ -9,6 +9,7 @@ checkout time, which would stamp every URL with the same wrong date.
 Run from the repo root:  python3 tools/gen-sitemap.py
 """
 import os
+import re
 import subprocess
 import sys
 
@@ -36,6 +37,21 @@ PAGES = [
 ]
 
 EXCLUDE = {"404.html"}
+
+NOINDEX = re.compile(r'<meta\s+name="robots"[^>]*content="[^"]*noindex', re.I)
+
+
+def is_noindex(path):
+    """A page that tells crawlers not to index it does not belong in the sitemap.
+
+    Read from the file rather than a hardcoded list, so marking a page noindex
+    is the only edit needed - the sitemap follows automatically.
+    """
+    try:
+        with open(path, encoding="utf-8") as fh:
+            return bool(NOINDEX.search(fh.read(4096)))
+    except OSError:
+        return False
 
 
 def git_date(path):
@@ -66,14 +82,19 @@ def main():
 
     rows = []
     missing = []
+    skipped = []
     for path, priority, freq in entries:
         if not os.path.exists(path):
             missing.append(path)
             continue
+        if is_noindex(path):
+            skipped.append(path)
+            continue
+        date = git_date(path)
         rows.append(
             "  <url>\n"
             f"    <loc>{loc_for(path)}</loc>\n"
-            + (f"    <lastmod>{git_date(path)}</lastmod>\n" if git_date(path) else "")
+            + (f"    <lastmod>{date}</lastmod>\n" if date else "")
             + f"    <changefreq>{freq}</changefreq>\n"
             f"    <priority>{priority}</priority>\n"
             "  </url>"
@@ -90,6 +111,8 @@ def main():
         fh.write(xml)
 
     print(f"sitemap.xml written: {len(rows)} urls")
+    if skipped:
+        print("  skipped (noindex): " + ", ".join(skipped))
     if missing:
         print("  skipped (not found): " + ", ".join(missing), file=sys.stderr)
 
