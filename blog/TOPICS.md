@@ -27,10 +27,6 @@ world rather than about our own products.
 
 ## Queue
 
-- [ ] SOP: Storing and handling nozzle filling compound to protect free opening rate
-- [ ] SOP: Filling the ladle nozzle, step by step
-- [ ] SOP: First heat-up schedule for refractory castable, and why rushing it spalls the lining
-- [ ] SOP: Applying ladle covering compound — dosage, timing and topping up
 - [ ] SOP: Casting powder feeding practice and controlling slag pool depth
 - [ ] SOP: Mixing refractory mortar and getting joint thickness right
 - [ ] SOP: Receiving and inspecting a consumables delivery before it reaches the floor
@@ -47,4 +43,8 @@ world rather than about our own products.
 
 ## Published
 
+- [x] 2026-07-14 — Storing and Handling Nozzle Filling Compound Without Losing Free Opening (SOP, NFC)
+- [x] 2026-07-21 — Filling the Ladle Nozzle, Step by Step (SOP, NFC)
+- [x] 2026-07-28 — The First Heat-Up of a Refractory Castable (SOP, castable)
+- [x] 2026-08-04 — Applying Ladle Covering Compound: Timing, Coverage and Topping Up (SOP, LCC)
 - [x] 2026-08-10 — Why a Ladle Does Not Open Freely, and What to Check First (diagnostic, NFC)

@@ -112,7 +112,7 @@ def post_html(p, header, footer, tail):
     pretty = datetime.strptime(p["date"], "%Y-%m-%d").strftime("%d %B %Y")
     # Appending the brand to an already-long headline pushes the title past
     # the ~60 chars Google renders, so only add it when it fits.
-    page_title = esc_title if len(p["title"]) > 45 else f"{esc_title} | PK Industries"
+    page_title = esc_title if len(p["title"]) > 45 else f"{esc_title} | PK INDUSTRIES"
 
     words = len(re.sub(r"<[^>]+>", " ", p["body"]).split())
     minutes = max(1, round(words / 200))
@@ -149,7 +149,7 @@ def post_html(p, header, footer, tail):
   "datePublished": "{p['date']}",
   "dateModified": "{p['date']}",
   "inLanguage": "en-IN",
-  "author": {{ "@type": "Organization", "name": "{AUTHOR}", "url": "{SITE}/about" }},
+  "author": {{ "@type": "Organization", "name": "{AUTHOR}", "url": "{SITE}/about.html" }},
   "publisher": {{ "@id": "{SITE}/#organization" }},
   "isPartOf": {{ "@type": "Blog", "@id": "{SITE}/blog.html" }},
   "mainEntityOfPage": "{url}",
@@ -175,7 +175,7 @@ def post_html(p, header, footer, tail):
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
   <meta name="description" content="{esc_desc}">
-  <meta name="author" content="P.K. Industries">
+  <meta name="author" content="PK INDUSTRIES">
   <meta name="theme-color" content="#06090f">
   <title>{page_title}</title>
   <link rel="canonical" href="{url}">
@@ -183,7 +183,7 @@ def post_html(p, header, footer, tail):
   <meta property="og:type" content="article">
   <meta property="og:locale" content="en_IN">
   <meta property="og:url" content="{url}">
-  <meta property="og:site_name" content="P.K. Industries">
+  <meta property="og:site_name" content="PK INDUSTRIES">
   <meta property="og:title" content="{esc_title}">
   <meta property="og:description" content="{esc_desc}">
   <meta property="og:image" content="{SITE}/img/{img_slug}.jpg">
@@ -198,7 +198,7 @@ def post_html(p, header, footer, tail):
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="/img/logo1.png">
   <link rel="manifest" href="/site.webmanifest">
-  <link rel="alternate" type="application/rss+xml" title="PK Industries Blog" href="/feed.xml">
+  <link rel="alternate" type="application/rss+xml" title="PK INDUSTRIES Blog" href="/feed.xml">
   <link rel="stylesheet" href="../css/modern-dark.css">
   <link rel="stylesheet" href="../css/docs.css">
 
@@ -321,7 +321,7 @@ def update_index(posts):
 
     if 'type="application/rss+xml"' not in src:
         src = src.replace('<link rel="canonical"',
-                          '<link rel="alternate" type="application/rss+xml" title="PK Industries Blog" href="/feed.xml">\n    <link rel="canonical"', 1)
+                          '<link rel="alternate" type="application/rss+xml" title="PK INDUSTRIES Blog" href="/feed.xml">\n    <link rel="canonical"', 1)
 
     with open(path, "w", encoding="utf-8") as fh:
         fh.write(src)
@@ -341,7 +341,7 @@ def write_feed(posts):
     feed = f'''<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>P.K. Industries - Steel Plant Consumables Blog</title>
+    <title>PK INDUSTRIES - Steel Plant Consumables Blog</title>
     <link>{SITE}/blog.html</link>
     <atom:link href="{SITE}/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Practical technical articles on casting powder, nozzle filling compound, refractory castable, mortar and ladle covering compound.</description>

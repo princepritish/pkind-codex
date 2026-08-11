@@ -32,7 +32,11 @@ PAGES = [
     ("ladle-covering-compound-docs.html", "0.8", "monthly"),
     ("research-hub.html", "0.8", "monthly"),
     ("chatbot.html", "0.7", "monthly"),
+    ("contact.html", "0.8", "yearly"),
+    ("about.html", "0.75", "yearly"),
+    ("exports.html", "0.75", "yearly"),
     ("glossary.html", "0.7", "yearly"),
+    ("privacy.html", "0.3", "yearly"),
     ("sitemap.html", "0.5", "yearly"),
 ]
 

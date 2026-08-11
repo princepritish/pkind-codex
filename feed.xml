@@ -6,13 +6,41 @@
     <atom:link href="https://pkindustries.net/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Practical technical articles on casting powder, nozzle filling compound, refractory castable, mortar and ladle covering compound.</description>
     <language>en-in</language>
-    <lastBuildDate>Tue, 11 Aug 2026 05:39:42 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 11 Aug 2026 19:35:42 +0000</lastBuildDate>
     <item>
       <title>Why a Ladle Does Not Open Freely, and What to Check First</title>
       <link>https://pkindustries.net/blog/why-ladle-does-not-open-freely.html</link>
       <guid isPermaLink="true">https://pkindustries.net/blog/why-ladle-does-not-open-freely.html</guid>
       <description>Free opening rate is one of the cleanest indicators of ladle practice health. Here are the four causes behind most failures, and the order to check them in.</description>
       <pubDate>Mon, 10 Aug 2026 09:00:00 +0530</pubDate>
+    </item>
+    <item>
+      <title>Applying Ladle Covering Compound: Timing, Coverage and Topping Up</title>
+      <link>https://pkindustries.net/blog/applying-ladle-covering-compound.html</link>
+      <guid isPermaLink="true">https://pkindustries.net/blog/applying-ladle-covering-compound.html</guid>
+      <description>Ladle covering compound only saves temperature if it forms an unbroken layer at the right moment. When to add it, how to judge coverage, and when topping up stops helping.</description>
+      <pubDate>Tue, 04 Aug 2026 09:00:00 +0530</pubDate>
+    </item>
+    <item>
+      <title>The First Heat-Up of a Refractory Castable, and Why Rushing It Spalls the Lining</title>
+      <link>https://pkindustries.net/blog/castable-first-heat-up.html</link>
+      <guid isPermaLink="true">https://pkindustries.net/blog/castable-first-heat-up.html</guid>
+      <description>Explosive spalling on first fire is a water problem, not a material problem. What is happening inside the lining, and how to build a heat-up schedule that survives it.</description>
+      <pubDate>Tue, 28 Jul 2026 09:00:00 +0530</pubDate>
+    </item>
+    <item>
+      <title>Filling the Ladle Nozzle, Step by Step</title>
+      <link>https://pkindustries.net/blog/filling-the-ladle-nozzle.html</link>
+      <guid isPermaLink="true">https://pkindustries.net/blog/filling-the-ladle-nozzle.html</guid>
+      <description>A repeatable filling procedure for the ladle well and nozzle, why the sequence matters more than the quantity, and the shortcuts that cost you a free open.</description>
+      <pubDate>Tue, 21 Jul 2026 09:00:00 +0530</pubDate>
+    </item>
+    <item>
+      <title>Storing and Handling Nozzle Filling Compound Without Losing Free Opening</title>
+      <link>https://pkindustries.net/blog/storing-nozzle-filling-compound.html</link>
+      <guid isPermaLink="true">https://pkindustries.net/blog/storing-nozzle-filling-compound.html</guid>
+      <description>Most free opening losses are decided in the store, not at the ladle. A practical storage and handling procedure, and the three habits that quietly undo it.</description>
+      <pubDate>Tue, 14 Jul 2026 09:00:00 +0530</pubDate>
     </item>
   </channel>
 </rss>

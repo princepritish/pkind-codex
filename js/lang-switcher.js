@@ -5,7 +5,7 @@
   }
 
   var STORAGE_KEY = 'pki_lang_pref';
-  var supported = ['en', 'hi', 'bn', 'ta', 'te', 'mr', 'gu', 'kn', 'ml', 'pa'];
+  var supported = ['en', 'hi', 'bn'];
 
   function getCanonicalUrl() {
     var node = document.querySelector('link[rel="canonical"]');
