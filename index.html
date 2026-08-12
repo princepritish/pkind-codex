@@ -595,6 +595,9 @@
             <button class="btn btn-primary" type="submit">Send Inquiry</button>
             <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
           </form>
+          <!-- Target for the no-CORS fallback submit. A plain form POST is not
+               subject to CORS, so this delivers the enquiry when fetch cannot. -->
+          <iframe class="hidden-field" name="inquirySubmitFrame" id="inquirySubmitFrame" title="Enquiry submission" aria-hidden="true" tabindex="-1"></iframe>
           <p class="form-fallback">Prefer WhatsApp? Message <a href="https://wa.me/919431342715" target="_blank" rel="noopener">+91 94313 42715</a> or email <a href="mailto:info@pkindustries.net">info@pkindustries.net</a>.</p>
         </article>
       </div>

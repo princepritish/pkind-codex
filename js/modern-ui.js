@@ -361,6 +361,23 @@
         status.className = 'form-status ok';
       }
     }).catch(function () {
+      // fetch failing here is almost always the endpoint not returning
+      // Access-Control-Allow-Origin for this site. Showing an error and
+      // stopping would lose the enquiry outright, so fall back to a plain
+      // form POST into a hidden iframe: that is not subject to CORS and
+      // still reaches the endpoint. The response is unreadable
+      // cross-origin, so the message below does not claim delivery.
+      var frame = document.getElementById('inquirySubmitFrame');
+      if (frame) {
+        form.target = 'inquirySubmitFrame';
+        HTMLFormElement.prototype.submit.call(form);
+        if (status) {
+          status.innerHTML = 'Enquiry sent. We could not confirm delivery from your browser, so if you do not hear back within one working day please WhatsApp ' +
+            '<a href="https://wa.me/919431342715">+91 94313 42715</a>.';
+          status.className = 'form-status';
+        }
+        return;
+      }
       if (status) {
         status.innerHTML = 'We could not send that automatically. Please WhatsApp ' +
           '<a href="https://wa.me/919431342715">+91 94313 42715</a> or email ' +

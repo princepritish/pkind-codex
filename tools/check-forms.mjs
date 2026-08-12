@@ -42,19 +42,27 @@ const BASE = process.env.BASE_URL || 'http://localhost:8901';
 const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
 let fails = 0;
 
+let ctxPosts = [];
 async function run(label, page, mode, fill, readStatus) {
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 1000 } });
   const p = await ctx.newPage();
   // Simulate the endpoint without reaching it
+  const posts = [];
   await p.route('**/formkeep.com/**', route => {
+    const req = route.request();
+    if (req.method() === 'POST') posts.push(req.resourceType());
     if (mode === 'ok') route.fulfill({ status: 200, contentType: 'application/json', body: '{"success":true}' });
-    else route.abort('failed');            // what a CORS rejection looks like to fetch()
+    else if (req.resourceType() === 'fetch' || req.resourceType() === 'xhr') route.abort('failed');
+    else route.fulfill({ status: 200, contentType: 'text/html', body: 'ok' });  // native form POST is not CORS-bound
   });
+  ctxPosts = posts;
   await p.goto(`${BASE}/${page}`, { waitUntil: 'networkidle' });
   await fill(p);
   await p.waitForTimeout(1800);
   const status = await readStatus(p);
-  console.log(`  ${label} [${mode}] -> ${status ? '"' + status.slice(0, 95) + '"' : '(no status shown)'}`);
+  console.log(`  ${label} [${mode}] -> ${status ? '"' + status.slice(0, 88) + '"' : '(no status shown)'}`);
+  console.log(`      POST attempts reaching endpoint: ${ctxPosts.length} (${ctxPosts.join(', ') || 'none'})`);
+  if (ctxPosts.length === 0) { console.log('      FAIL: enquiry never left the browser'); fails++; }
   await ctx.close();
   return status || '';
 }
