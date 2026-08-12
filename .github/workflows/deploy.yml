@@ -37,6 +37,13 @@ jobs:
       - name: Regenerate sitemap.xml from git history
         run: python3 tools/gen-sitemap.py
 
+      # Assets are served immutable for a year, so a fixed filename would
+      # never reach a returning visitor again - CloudFront invalidation
+      # clears the edge, not the browser. Stamping the commit sha onto CSS
+      # and JS URLs makes each deploy a URL the browser has not cached.
+      - name: Version CSS and JS URLs for cache busting
+        run: python3 tools/version-assets.py
+
       - name: Test ARN Variable
         run: |
              if [ -z "${{ secrets.AWS_ROLE_ARN }}" ]; then
