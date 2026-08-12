@@ -37,6 +37,12 @@ jobs:
       - name: Regenerate sitemap.xml from git history
         run: python3 tools/gen-sitemap.py
 
+      # Fails the deploy on rules that generators keep quietly undoing:
+      # non-canonical homepage links, entity-name drift, autoplay, broken
+      # internal links, noindex pages left in the sitemap.
+      - name: Check site invariants
+        run: python3 tools/check-invariants.py
+
       # Assets are served immutable for a year, so a fixed filename would
       # never reach a returning visitor again - CloudFront invalidation
       # clears the edge, not the browser. Stamping the commit sha onto CSS

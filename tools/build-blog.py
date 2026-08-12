@@ -81,7 +81,9 @@ def chrome():
                 out.append(cand)
             return f'{attr}="{", ".join(out)}"'
         block = re.sub(r'(srcset|imagesrcset)="([^"]*)"', fix_srcset, block)
-        block = block.replace('href="../#', 'href="../index.html#')
+        # Anchors on the homepage must point at the canonical "/", never
+        # "/index.html" - the latter 301s away and leaks link equity.
+        block = block.replace('href="../#', 'href="/#')
         return block
 
     return up(header), up(footer), up(tail)
@@ -216,7 +218,7 @@ def post_html(p, header, footer, tail):
 
   <main id="main-content">
     <article class="section shell prose-post">
-      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../blog.html">Blog</a><span>/</span><span aria-current="page">{esc_title}</span></nav>
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="../blog.html">Blog</a><span>/</span><span aria-current="page">{esc_title}</span></nav>
       <p class="eyebrow">Technical article</p>
       <h1>{esc_title}</h1>
 
