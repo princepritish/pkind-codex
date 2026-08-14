@@ -2184,3 +2184,103 @@ body[data-theme="dark"] .form-status.error { color: #ffa040; }
 .footer-nap a {
   color: inherit;
 }
+
+/* ---------------------------------------------------------------------------
+   Independence Day greeting strip. TEMPORARY - self-expires after
+   16 Aug 2026 IST (see js/modern-ui.js). Safe to delete this block and the
+   matching script after that date.
+
+   Fixed to the bottom deliberately: an element inserted into normal flow by
+   a deferred script would push the page down and count against CLS, and a
+   full-screen overlay on arrival is the intrusive-interstitial pattern
+   Google penalises on mobile. Fixed positioning shifts nothing.
+   --------------------------------------------------------------------------- */
+.festive-strip {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 48;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  padding: 0.6rem 3.4rem 0.6rem 1rem;
+  background: var(--panel);
+  border-top: 1px solid var(--panel-border);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 -10px 30px rgba(2, 8, 17, 0.32);
+}
+
+/* Tricolour edge, kept as a thin accent rather than a full-bleed background
+   so the strip still reads as part of the site. */
+.festive-strip::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ff9933 0 33.33%, #ffffff 33.33% 66.66%, #138808 66.66% 100%);
+}
+
+.festive-text {
+  margin: 0;
+  color: var(--text);
+  font-size: 0.94rem;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.festive-text strong {
+  color: #ff9933;
+  letter-spacing: 0.02em;
+}
+
+.festive-text .festive-jai {
+  color: #138808;
+  font-weight: 700;
+}
+
+body:not([data-theme="dark"]) .festive-text strong { color: #c96a10; }
+body:not([data-theme="dark"]) .festive-text .festive-jai { color: #0f6b06; }
+
+.festive-dismiss {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--panel-border);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.festive-dismiss:hover,
+.festive-dismiss:focus-visible {
+  color: var(--text);
+  border-color: var(--primary);
+}
+
+/* Lift the floating actions so the strip never sits on top of them. */
+body.has-festive-strip .whatsapp-float { bottom: 74px; }
+body.has-festive-strip .chatbot-float { bottom: 142px; }
+
+@media (max-width: 760px) {
+  .festive-strip { padding: 0.55rem 3rem 0.55rem 0.85rem; }
+  .festive-text { font-size: 0.85rem; }
+}
+
+/* Below this the full line wraps and strands a separator, so drop the middle
+   clause and keep the greeting on one line. */
+@media (max-width: 520px) {
+  .festive-mid { display: none; }
+}

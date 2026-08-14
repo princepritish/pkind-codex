@@ -387,3 +387,74 @@
     }).finally(function () { if (submit) submit.disabled = false; });
   });
 })();
+
+/* ---------------------------------------------------------------------------
+   Independence Day greeting strip. TEMPORARY.
+
+   Self-expires at the end of 16 Aug 2026 IST, after which nothing renders and
+   the stored dismissal is cleaned up. Safe to delete this block and the
+   .festive-strip CSS any time after that.
+
+   Injected rather than written into 27 HTML files so there is no markup to
+   clean up afterwards, and so it never becomes stale content a crawler sees.
+   --------------------------------------------------------------------------- */
+(function () {
+  'use strict';
+
+  // End of 16 Aug 2026 in IST (UTC+5:30) == 16 Aug 18:30 UTC.
+  var EXPIRES_AT = Date.UTC(2026, 7, 16, 18, 30, 0);
+  var STORAGE_KEY = 'pki-festive-2026-08-15';
+
+  function store(action, value) {
+    try {
+      if (action === 'get') return window.localStorage.getItem(STORAGE_KEY);
+      if (action === 'set') window.localStorage.setItem(STORAGE_KEY, value);
+      if (action === 'remove') window.localStorage.removeItem(STORAGE_KEY);
+    } catch (err) {
+      // Private mode or storage disabled: the strip simply reappears.
+    }
+    return null;
+  }
+
+  if (Date.now() > EXPIRES_AT) {
+    store('remove');
+    return;
+  }
+  if (store('get') === 'dismissed') return;
+
+  function build() {
+    if (document.querySelector('.festive-strip')) return;
+
+    var strip = document.createElement('aside');
+    strip.className = 'festive-strip';
+    strip.setAttribute('aria-label', 'Independence Day greeting');
+
+    var text = document.createElement('p');
+    text.className = 'festive-text';
+    text.innerHTML = '<strong>Happy Independence Day</strong>' +
+      '<span class="festive-mid"> &middot; 80th year of freedom</span> &middot; ' +
+      '<span class="festive-jai">Jai Hind</span>';
+
+    var close = document.createElement('button');
+    close.type = 'button';
+    close.className = 'festive-dismiss';
+    close.setAttribute('aria-label', 'Dismiss Independence Day greeting');
+    close.innerHTML = '&times;';
+    close.addEventListener('click', function () {
+      strip.remove();
+      document.body.classList.remove('has-festive-strip');
+      store('set', 'dismissed');
+    });
+
+    strip.appendChild(text);
+    strip.appendChild(close);
+    document.body.appendChild(strip);
+    document.body.classList.add('has-festive-strip');
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', build);
+  } else {
+    build();
+  }
+})();
