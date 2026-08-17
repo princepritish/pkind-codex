@@ -24,6 +24,7 @@ PAGES = [
     ("castable.html", "0.9", "monthly"),
     ("mortar.html", "0.9", "monthly"),
     ("ladle-covering-compound-radex.html", "0.9", "monthly"),
+    ("thermocouple-tips-samplers.html", "0.9", "monthly"),
     ("blog.html", "0.85", "weekly"),
     ("documentation.html", "0.85", "monthly"),
     ("casting-powder-docs.html", "0.8", "monthly"),

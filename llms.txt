@@ -3,7 +3,8 @@
 > Manufacturer, exporter and supplier of steel melting shop (SMS) consumables and
 > continuous casting machine (CCM) raw materials, based in Adityapur, Jamshedpur,
 > Jharkhand, India. Five product lines: casting powder (mould flux), nozzle filling
-> compound, refractory castable, refractory mortar, and ladle covering compound (Radex).
+> compound, refractory castable, refractory mortar, ladle covering compound (Radex),
+> and disposable thermocouple tips and samplers.
 
 PK INDUSTRIES supplies steel producers across India and exports internationally.
 Grades are formulated to the customer's steel chemistry, casting route, casting speed
@@ -23,6 +24,7 @@ Jharkhand, West Bengal, Odisha, Chhattisgarh and Bihar.
 - [Refractory Castable](https://pkindustries.net/castable.html): Monolithic refractory for furnace linings, ladle linings, launders and high-wear zones. Cast, pumped or gunned into place to form a jointless lining.
 - [Refractory Mortar](https://pkindustries.net/mortar.html): Dry-blend bonding mortar for refractory jointing, local patching and furnace maintenance. Supplied in 25 kg and 50 kg bags, up to 6 months shelf life in dry storage.
 - [Ladle Covering Compound (Radex)](https://pkindustries.net/ladle-covering-compound-radex.html): Low-density insulating powder spread over molten steel in the ladle to cut radiative heat loss and limit reoxidation during holding and casting.
+- [Disposable Thermocouple Tips & Samplers](https://pkindustries.net/thermocouple-tips-samplers.html): Single-use immersion probes giving bath temperature in 3-5 seconds (Types S and R to 1650 C, Type B to 1750 C, tolerance +/- 5 C, 602/604 contact blocks, paper tubes 300-1800 mm), plus disposable samplers for drawing molten steel samples for analysis. Used at the furnace, ladle and tundish.
 
 ## Technical documentation
 
