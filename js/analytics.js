@@ -37,10 +37,20 @@
     else if (href.indexOf('mailto:') === 0) gtag('event', 'email_click');
   });
 
-  var form = document.getElementById('inquiryForm');
-  if (form) {
-    form.addEventListener('submit', function () {
-      gtag('event', 'generate_lead', { form_id: 'inquiryForm' });
+  // The homepage enquiry form is a cross-origin FormKeep embed, so its submit
+  // event is not observable from here. Track the intent to open it instead,
+  // and treat the guided enquiry (same-origin) as the lead event.
+  var loadFormBtn = document.getElementById('loadInquiryBtn');
+  if (loadFormBtn) {
+    loadFormBtn.addEventListener('click', function () {
+      gtag('event', 'form_open', { form_id: 'formkeep-embed' });
+    });
+  }
+
+  var assistant = document.getElementById('assistantForm');
+  if (assistant) {
+    assistant.addEventListener('submit', function () {
+      gtag('event', 'generate_lead', { form_id: 'assistantForm' });
     });
   }
 })();

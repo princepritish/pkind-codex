@@ -242,6 +242,60 @@
     }
   }
 
+  function loadScript(src) {
+    return new Promise(function (resolve, reject) {
+      if (document.querySelector('script[src="' + src + '"]')) {
+        resolve();
+        return;
+      }
+
+      var script = document.createElement('script');
+      script.src = src;
+      script.async = true;
+      script.onload = function () { resolve(); };
+      script.onerror = function () { reject(new Error('Failed to load ' + src)); };
+      document.body.appendChild(script);
+    });
+  }
+
+  var formEmbed = document.getElementById('formkeep-embed');
+  var loadInquiryBtn = document.getElementById('loadInquiryBtn');
+  if (formEmbed) {
+    var formScriptsLoaded = false;
+    var loadFormScripts = function () {
+      if (formScriptsLoaded) {
+        return;
+      }
+
+      formScriptsLoaded = true;
+      if (loadInquiryBtn) {
+        loadInquiryBtn.disabled = true;
+        loadInquiryBtn.textContent = 'Loading Form...';
+      }
+
+      loadScript('https://pym.nprapps.org/pym.v1.min.js')
+        .then(function () {
+          return loadScript('https://formkeep-production-herokuapp-com.global.ssl.fastly.net/formkeep-embed.js');
+        })
+        .then(function () {
+          if (loadInquiryBtn) {
+            loadInquiryBtn.textContent = 'Inquiry Form Loaded';
+          }
+        })
+        .catch(function () {
+          if (loadInquiryBtn) {
+            loadInquiryBtn.disabled = false;
+            loadInquiryBtn.textContent = 'Retry Loading Form';
+          }
+          // Keep fallback link available if third-party scripts fail.
+        });
+    };
+
+    if (loadInquiryBtn) {
+      loadInquiryBtn.addEventListener('click', loadFormScripts);
+    }
+  }
+
   var mapContainer = document.getElementById('mapContainer');
   var loadMapBtn = document.getElementById('loadMapBtn');
   if (mapContainer && loadMapBtn) {
@@ -333,59 +387,6 @@
     }, { passive: true });
   });
 
-})();
-
-/* Inquiry form: submit without leaving the page, with a visible fallback. */
-(function () {
-  var form = document.getElementById('inquiryForm');
-  if (!form) return;
-  var status = document.getElementById('formStatus');
-  var submit = form.querySelector('button[type="submit"]');
-
-  form.addEventListener('submit', function (event) {
-    if (!window.fetch) return; // let the browser do a normal POST
-    event.preventDefault();
-
-    if (status) { status.textContent = 'Sending your enquiry...'; status.className = 'form-status'; }
-    if (submit) submit.disabled = true;
-
-    window.fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { Accept: 'application/json' }
-    }).then(function (r) {
-      if (!r.ok) throw new Error(r.status);
-      form.reset();
-      if (status) {
-        status.textContent = 'Thank you. We have received your enquiry and typically reply within one working day.';
-        status.className = 'form-status ok';
-      }
-    }).catch(function () {
-      // fetch failing here is almost always the endpoint not returning
-      // Access-Control-Allow-Origin for this site. Showing an error and
-      // stopping would lose the enquiry outright, so fall back to a plain
-      // form POST into a hidden iframe: that is not subject to CORS and
-      // still reaches the endpoint. The response is unreadable
-      // cross-origin, so the message below does not claim delivery.
-      var frame = document.getElementById('inquirySubmitFrame');
-      if (frame) {
-        form.target = 'inquirySubmitFrame';
-        HTMLFormElement.prototype.submit.call(form);
-        if (status) {
-          status.innerHTML = 'Enquiry sent. We could not confirm delivery from your browser, so if you do not hear back within one working day please WhatsApp ' +
-            '<a href="https://wa.me/919431342715">+91 94313 42715</a>.';
-          status.className = 'form-status';
-        }
-        return;
-      }
-      if (status) {
-        status.innerHTML = 'We could not send that automatically. Please WhatsApp ' +
-          '<a href="https://wa.me/919431342715">+91 94313 42715</a> or email ' +
-          '<a href="mailto:info@pkindustries.net">info@pkindustries.net</a>.';
-        status.className = 'form-status error';
-      }
-    }).finally(function () { if (submit) submit.disabled = false; });
-  });
 })();
 
 /* ---------------------------------------------------------------------------

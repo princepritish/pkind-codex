@@ -548,57 +548,12 @@
         <article class="panel inquiry-panel reveal">
           <h3>Send Inquiry</h3>
           <p class="contact-form-note">Share your heat size, steel grade, and current issue. We will recommend a practical trial grade.</p>
-          <form id="inquiryForm" class="inquiry-form" method="POST"
-                action="https://formkeep.com/p/2ce995099e550113ca55248b19ce63ea"
-                accept-charset="UTF-8">
-            <div class="field-row">
-              <div class="field">
-                <label for="inq-name">Your name <span class="req">*</span></label>
-                <input type="text" id="inq-name" name="name" autocomplete="name" required>
-              </div>
-              <div class="field">
-                <label for="inq-company">Company <span class="req">*</span></label>
-                <input type="text" id="inq-company" name="company" autocomplete="organization" required>
-              </div>
-            </div>
-            <div class="field-row">
-              <div class="field">
-                <label for="inq-email">Email <span class="req">*</span></label>
-                <input type="email" id="inq-email" name="email" autocomplete="email" required>
-              </div>
-              <div class="field">
-                <label for="inq-phone">Phone / WhatsApp</label>
-                <input type="tel" id="inq-phone" name="phone" autocomplete="tel" inputmode="tel">
-              </div>
-            </div>
-            <div class="field">
-              <label for="inq-product">Product of interest</label>
-              <select id="inq-product" name="product">
-                <option value="">Select a product</option>
-                <option>Casting Powder (Mould Flux)</option>
-                <option>Nozzle Filling Compound (NFC)</option>
-                <option>Refractory Castable</option>
-                <option>Mortar</option>
-                <option>Ladle Covering Compound (Radex)</option>
-                <option>More than one / not sure</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="inq-message">What are you trying to solve? <span class="req">*</span></label>
-              <textarea id="inq-message" name="message" rows="4" required
-                        placeholder="Heat size, steel grade, casting speed, current consumption, and the issue you are seeing."></textarea>
-            </div>
-            <div class="hp-field" aria-hidden="true">
-              <label for="inq-website">Leave this field empty</label>
-              <input type="text" id="inq-website" name="website" tabindex="-1" autocomplete="off">
-            </div>
-            <button class="btn btn-primary" type="submit">Send Inquiry</button>
-            <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
-          </form>
-          <!-- Target for the no-CORS fallback submit. A plain form POST is not
-               subject to CORS, so this delivers the enquiry when fetch cannot. -->
-          <iframe class="hidden-field" name="inquirySubmitFrame" id="inquirySubmitFrame" title="Enquiry submission" aria-hidden="true" tabindex="-1"></iframe>
-          <p class="form-fallback">Prefer WhatsApp? Message <a href="https://wa.me/919431342715" target="_blank" rel="noopener">+91 94313 42715</a> or email <a href="mailto:info@pkindustries.net">info@pkindustries.net</a>.</p>
+          <div id="formkeep-embed" data-formkeep-url="https://formkeep.com/p/2ce995099e550113ca55248b19ce63ea?embedded=1"></div>
+          <div class="defer-actions">
+            <button type="button" class="btn btn-ghost" id="loadInquiryBtn">Load Inquiry Form</button>
+          </div>
+          <p class="defer-note">Form is loaded on demand to keep mobile performance fast.</p>
+          <p class="form-fallback"><a href="https://formkeep.com/p/2ce995099e550113ca55248b19ce63ea" target="_blank" rel="noopener">Open Full Inquiry Form</a></p>
         </article>
       </div>
       <article class="panel map-panel reveal">

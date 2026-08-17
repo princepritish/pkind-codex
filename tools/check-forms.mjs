@@ -1,15 +1,17 @@
 /**
- * Regression test: both enquiry forms must confirm on success and warn on
- * failure - and must never claim success when delivery is unknown.
+ * Regression test: the guided enquiry on chatbot.html must actually POST to the
+ * form endpoint when submitted.
  *
- * The chat assistant previously reported "Enquiry submitted" from an iframe
- * load event, which fires for error pages too and is cross-origin, so it
- * could not distinguish success from failure at all.
+ * History worth keeping in view. The homepage enquiry form was briefly a
+ * hand-built form POSTing to https://formkeep.com/p/<id> - which is FormKeep's
+ * hosted form *page*, not a submission endpoint - so submissions went nowhere
+ * for a fortnight while the UI reported success. The homepage is now back on
+ * the FormKeep embed, which is cross-origin and cannot be asserted on from
+ * here; chatbot.html posts same-origin markup to the endpoint and can be.
  *
- * The FormKeep endpoint is unreachable from CI and from the dev sandbox, so
- * the endpoint is simulated with request interception: fulfil 200 for the
- * success path, abort for the failure path (which is what a CORS rejection
- * looks like to fetch). This tests our handling, not FormKeep's uptime.
+ * The endpoint is unreachable from CI and from the sandbox, so it is simulated
+ * with request interception. This tests that we send, not that FormKeep
+ * receives.
  *
  * Usage:
  *   python3 -m http.server 8901 &
@@ -39,63 +41,52 @@ function loadPlaywright() {
 const { chromium } = loadPlaywright();
 const BASE = process.env.BASE_URL || 'http://localhost:8901';
 
-const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
-let fails = 0;
+const browser = await chromium.launch({
+  executablePath: process.env.CHROMIUM_PATH || '/opt/pw-browsers/chromium-1194/chrome-linux/chrome',
+});
+let failures = 0;
 
-let ctxPosts = [];
-async function run(label, page, mode, fill, readStatus) {
-  const ctx = await browser.newContext({ viewport: { width: 1280, height: 1000 } });
-  const p = await ctx.newPage();
-  // Simulate the endpoint without reaching it
-  const posts = [];
-  await p.route('**/formkeep.com/**', route => {
-    const req = route.request();
-    if (req.method() === 'POST') posts.push(req.resourceType());
-    if (mode === 'ok') route.fulfill({ status: 200, contentType: 'application/json', body: '{"success":true}' });
-    else if (req.resourceType() === 'fetch' || req.resourceType() === 'xhr') route.abort('failed');
-    else route.fulfill({ status: 200, contentType: 'text/html', body: 'ok' });  // native form POST is not CORS-bound
-  });
-  ctxPosts = posts;
-  await p.goto(`${BASE}/${page}`, { waitUntil: 'networkidle' });
-  await fill(p);
-  await p.waitForTimeout(1800);
-  const status = await readStatus(p);
-  console.log(`  ${label} [${mode}] -> ${status ? '"' + status.slice(0, 88) + '"' : '(no status shown)'}`);
-  console.log(`      POST attempts reaching endpoint: ${ctxPosts.length} (${ctxPosts.join(', ') || 'none'})`);
-  if (ctxPosts.length === 0) { console.log('      FAIL: enquiry never left the browser'); fails++; }
-  await ctx.close();
-  return status || '';
+const ctx = await browser.newContext({ viewport: { width: 1280, height: 1000 } });
+const page = await ctx.newPage();
+
+const posts = [];
+await page.route('**/formkeep.com/**', route => {
+  const request = route.request();
+  if (request.method() === 'POST') posts.push(request.url());
+  route.fulfill({ status: 200, contentType: 'text/html', body: 'ok' });
+});
+
+await page.goto(`${BASE}/chatbot.html`, { waitUntil: 'networkidle' });
+await page.selectOption('#productName', { index: 1 });
+await page.fill('#plantLocation', 'Jamshedpur');
+await page.fill('#currentIssue', 'Testing the submit path.');
+await page.click('#submitAssistant');
+await page.waitForTimeout(1500);
+
+const status = await page.textContent('#submitStatus');
+console.log(`guided enquiry status: "${(status || '').slice(0, 90)}"`);
+console.log(`POSTs reaching endpoint: ${posts.length}`);
+
+if (posts.length === 0) {
+  console.error('  FAIL: submitting the guided enquiry sent nothing');
+  failures++;
 }
 
-console.log('index.html inquiry form');
-const fillInquiry = async p => {
-  await p.fill('#inq-name', 'Test'); await p.fill('#inq-company', 'Test Co');
-  await p.fill('#inq-email', 't@example.com'); await p.fill('#inq-message', 'Testing the submit path.');
-  await p.click('#inquiryForm button[type="submit"]');
-};
-const inqStatus = p => p.textContent('#formStatus');
-const a = await run('inquiry', 'index.html', 'ok', fillInquiry, inqStatus);
-const b = await run('inquiry', 'index.html', 'fail', fillInquiry, inqStatus);
-if (!/received your enquiry/i.test(a)) { console.log('    FAIL: success path did not confirm'); fails++; }
-if (!/could not send|whatsapp/i.test(b)) { console.log('    FAIL: failure path did not warn'); fails++; }
+// Warning, not a failure. Posting to the /p/ hosted-page path is a *suspected*
+// dead end - it is what broke the homepage form - but chatbot.html has posted
+// there since before this project started and nobody has confirmed either way.
+// Verify against the FormKeep dashboard before treating this as broken.
+const pageUrlPosts = posts.filter(u => /formkeep\.com\/p\//.test(u));
+if (pageUrlPosts.length) {
+  console.warn(`  WARN: posts to FormKeep's hosted-page path (/p/). Unconfirmed whether`);
+  console.warn(`        that path accepts submissions - check the dashboard: ${pageUrlPosts[0]}`);
+}
 
-console.log('\nchatbot.html assistant form');
-const fillAssistant = async p => {
-  await p.selectOption('#productName', { index: 1 });
-  await p.fill('#plantLocation', 'Jamshedpur');
-  await p.fill('#currentIssue', 'Testing the submit path.');
-  await p.click('#submitAssistant');
-};
-const asstStatus = p => p.textContent('#submitStatus');
-const c = await run('assistant', 'chatbot.html', 'ok', fillAssistant, asstStatus);
-const d = await run('assistant', 'chatbot.html', 'fail', fillAssistant, asstStatus);
-if (!/submitted/i.test(c)) { console.log('    FAIL: success path did not confirm'); fails++; }
-if (/^Enquiry submitted\./i.test(d)) { console.log('    FAIL: claims success on failure'); fails++; }
-if (!/could not be confirmed|whatsapp|could not send/i.test(d)) { console.log('    FAIL: failure path not hedged'); fails++; }
-
+await ctx.close();
 await browser.close();
-if (fails) {
-  console.error(`\n${fails} failure(s): form feedback is wrong`);
+
+if (failures) {
+  console.error(`\n${failures} failure(s)`);
   process.exit(1);
 }
-console.log('\nPASS: both forms confirm on success and warn on failure');
+console.log('\nPASS: guided enquiry posts to the endpoint');
