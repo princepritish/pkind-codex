@@ -157,11 +157,56 @@
         </div>
       </div>
       <figure class="hero-visual hero-visual-diagram reveal">
-        <picture>
-          <source type="image/webp" srcset="img/thermocouple-tip-construction.webp">
-          <img src="img/thermocouple-tip-construction.jpg" alt="Cutaway of a disposable thermocouple tip showing the slag cap, quartz sheath, refractory filler and contact block" width="960" height="274" fetchpriority="high" decoding="async">
-        </picture>
-        <figcaption class="spec-note">Tip construction: what sits behind the slag cap.</figcaption>
+        <svg class="diagram-svg" viewBox="0 0 960 470" role="img"
+             aria-label="Disposable thermocouple tips in Type S and Type B, and a disposable immersion sampler, shown as supplied on their paper tubes">
+          <title>Disposable thermocouple tips and samplers as supplied</title>
+          <rect x="0" y="0" width="960" height="470" rx="14" fill="#F2F4F7"/>
+
+          <!-- Type S / R tip -->
+          <g>
+            <rect x="60" y="70" width="480" height="54" rx="4" fill="#C89B6A"/>
+            <g stroke="#A87F52" stroke-width="1.5">
+              <line x1="150" y1="70" x2="150" y2="124"/><line x1="240" y1="70" x2="240" y2="124"/>
+              <line x1="330" y1="70" x2="330" y2="124"/><line x1="420" y1="70" x2="420" y2="124"/>
+            </g>
+            <rect x="540" y="60" width="112" height="74" rx="6" fill="#5A6473"/>
+            <rect x="652" y="72" width="34" height="50" rx="4" fill="#8B95A3"/>
+            <path d="M686 78 L716 97 L686 116 Z" fill="#C1651F"/>
+            <text x="60" y="156" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="14" fill="#1B222C">TYPE S / R</text>
+            <text x="180" y="156" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="14" fill="#6B7785">Pt-Rh 10% / 13%  &#183;  to 1650 &#176;C</text>
+          </g>
+
+          <!-- Type B tip -->
+          <g>
+            <rect x="60" y="216" width="380" height="54" rx="4" fill="#C89B6A"/>
+            <g stroke="#A87F52" stroke-width="1.5">
+              <line x1="150" y1="216" x2="150" y2="270"/><line x1="240" y1="216" x2="240" y2="270"/>
+              <line x1="330" y1="216" x2="330" y2="270"/>
+            </g>
+            <rect x="440" y="206" width="112" height="74" rx="6" fill="#3C4551"/>
+            <rect x="552" y="218" width="34" height="50" rx="4" fill="#8B95A3"/>
+            <path d="M586 224 L616 243 L586 262 Z" fill="#C1651F"/>
+            <text x="60" y="302" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="14" fill="#1B222C">TYPE B</text>
+            <text x="180" y="302" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="14" fill="#6B7785">Pt-Rh 30 / Pt-Rh 6  &#183;  to 1750 &#176;C</text>
+          </g>
+
+          <!-- Immersion sampler -->
+          <g>
+            <rect x="60" y="362" width="330" height="54" rx="4" fill="#C89B6A"/>
+            <g stroke="#A87F52" stroke-width="1.5">
+              <line x1="150" y1="362" x2="150" y2="416"/><line x1="240" y1="362" x2="240" y2="416"/>
+              <line x1="330" y1="362" x2="330" y2="416"/>
+            </g>
+            <rect x="390" y="346" width="150" height="86" rx="8" fill="#8B95A3"/>
+            <rect x="390" y="376" width="150" height="10" fill="#C0392B"/>
+            <path d="M540 356 L578 389 L540 422 Z" fill="#C1651F"/>
+            <text x="60" y="448" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="14" fill="#1B222C">SAMPLER</text>
+            <text x="180" y="448" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="14" fill="#6B7785">immersion sampler for bath analysis</text>
+          </g>
+
+          <text x="934" y="40" text-anchor="end" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="14" fill="#6B7785">Paper tube 300 - 1800 mm, cut to your lance</text>
+        </svg>
+        <figcaption>Tips and samplers as supplied, on paper tubes cut to your lance.</figcaption>
       </figure>
     </section>
   </header>
@@ -231,9 +276,16 @@
 
     <section class="section shell">
       <div class="section-heading reveal">
-        <p class="eyebrow">Sampler Construction</p>
-        <h2>What sits inside a disposable sampler.</h2>
+        <p class="eyebrow">Construction</p>
+        <h2>What sits behind the slag cap.</h2>
       </div>
+      <figure class="diagram-figure" style="margin-bottom:1.6rem">
+        <picture>
+          <source type="image/webp" srcset="img/thermocouple-tip-construction.webp">
+          <img class="diagram-svg" src="img/thermocouple-tip-construction.jpg" alt="Cutaway of a disposable thermocouple tip showing the slag cap, quartz sheath, refractory filler and contact block" width="960" height="274" loading="lazy" decoding="async">
+        </picture>
+        <figcaption>Tip construction: what sits behind the slag cap.</figcaption>
+      </figure>
         <figure class="diagram-figure">
           <svg class="diagram-svg" viewBox="0 0 960 330" role="img"
                aria-label="Cutaway of a disposable immersion sampler showing the paper tube, slag cap, quartz inlet, sample cavity and deoxidant pocket">
