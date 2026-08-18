@@ -6,7 +6,21 @@
     <atom:link href="https://pkindustries.net/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Practical technical articles on casting powder, nozzle filling compound, refractory castable, mortar and ladle covering compound.</description>
     <language>en-in</language>
-    <lastBuildDate>Wed, 12 Aug 2026 06:35:52 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 18 Aug 2026 19:43:41 +0000</lastBuildDate>
+    <item>
+      <title>Getting a Reliable First Read from a Disposable Thermocouple Tip</title>
+      <link>https://pkindustries.net/blog/thermocouple-first-read-success.html</link>
+      <guid isPermaLink="true">https://pkindustries.net/blog/thermocouple-first-read-success.html</guid>
+      <description>A failed read costs a repeat immersion and a decision made on a stale number. Immersion practice, lance condition and how to judge a batch across a shift rather than a heat.</description>
+      <pubDate>Mon, 17 Aug 2026 09:00:00 +0530</pubDate>
+    </item>
+    <item>
+      <title>Receiving and Inspecting a Consumables Delivery Before It Reaches the Floor</title>
+      <link>https://pkindustries.net/blog/receiving-consumables-delivery.html</link>
+      <guid isPermaLink="true">https://pkindustries.net/blog/receiving-consumables-delivery.html</guid>
+      <description>The cheapest quality control any shop has is the fifteen minutes at the gate. What to check on arrival, what to record, and why a problem found later is untraceable.</description>
+      <pubDate>Tue, 11 Aug 2026 09:00:00 +0530</pubDate>
+    </item>
     <item>
       <title>Why a Ladle Does Not Open Freely, and What to Check First</title>
       <link>https://pkindustries.net/blog/why-ladle-does-not-open-freely.html</link>
@@ -41,6 +55,20 @@
       <guid isPermaLink="true">https://pkindustries.net/blog/storing-nozzle-filling-compound.html</guid>
       <description>Most free opening losses are decided in the store, not at the ladle. A practical storage and handling procedure, and the three habits that quietly undo it.</description>
       <pubDate>Tue, 14 Jul 2026 09:00:00 +0530</pubDate>
+    </item>
+    <item>
+      <title>Mixing Refractory Mortar and Getting Joint Thickness Right</title>
+      <link>https://pkindustries.net/blog/mixing-refractory-mortar.html</link>
+      <guid isPermaLink="true">https://pkindustries.net/blog/mixing-refractory-mortar.html</guid>
+      <description>Most lining failures start at a joint, and most joint failures start at the mixing board. Water control, consistency, joint thickness and the shortcuts that undo all three.</description>
+      <pubDate>Tue, 07 Jul 2026 09:00:00 +0530</pubDate>
+    </item>
+    <item>
+      <title>Casting Powder Feeding Practice and Controlling Slag Pool Depth</title>
+      <link>https://pkindustries.net/blog/casting-powder-feeding-practice.html</link>
+      <guid isPermaLink="true">https://pkindustries.net/blog/casting-powder-feeding-practice.html</guid>
+      <description>Consumption per tonne is an outcome, not a setting. How feeding practice determines slag pool depth, and the habits that quietly wreck both.</description>
+      <pubDate>Tue, 30 Jun 2026 09:00:00 +0530</pubDate>
     </item>
   </channel>
 </rss>

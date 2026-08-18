@@ -27,9 +27,6 @@ world rather than about our own products.
 
 ## Queue
 
-- [ ] SOP: Casting powder feeding practice and controlling slag pool depth
-- [ ] SOP: Mixing refractory mortar and getting joint thickness right
-- [ ] SOP: Receiving and inspecting a consumables delivery before it reaches the floor
 - [ ] SOP: Running a monthly free-opening audit and acting on the number
 - [ ] Casting powder vs mould flux vs mould powder — the same product, three names
 - [ ] Choosing between 60% and 90% alumina castable by wear zone
@@ -40,9 +37,16 @@ world rather than about our own products.
 - [ ] Diagnostic: castable spalling on first fire
 - [ ] Reading a casting powder datasheet: basicity, melting range and carbon
 - [ ] What superheat does to consumable selection across the whole SMS
+- [ ] SOP: Taking a representative steel sample for spectrometer analysis
+- [ ] Thermocouple types S, R and B — choosing by bath temperature and instrument
+- [ ] Diagnostic: temperature readings drifting between lance and instrument
 
 ## Published
 
+- [x] 2026-06-30 — Casting Powder Feeding Practice and Controlling Slag Pool Depth (SOP, casting powder)
+- [x] 2026-07-07 — Mixing Refractory Mortar and Getting Joint Thickness Right (SOP, mortar)
+- [x] 2026-08-11 — Receiving and Inspecting a Consumables Delivery (SOP, goods inward)
+- [x] 2026-08-17 — Getting a Reliable First Read from a Disposable Thermocouple Tip (SOP, TC tips)
 - [x] 2026-07-14 — Storing and Handling Nozzle Filling Compound Without Losing Free Opening (SOP, NFC)
 - [x] 2026-07-21 — Filling the Ladle Nozzle, Step by Step (SOP, NFC)
 - [x] 2026-07-28 — The First Heat-Up of a Refractory Castable (SOP, castable)

@@ -40,6 +40,7 @@ PRODUCT_IMAGES = {
     "castable": ("castable-thumb", "Refractory castable lining material"),
     "mortar": ("mortar-rs", "Refractory mortar for jointing and patching"),
     "ladle-covering-compound": ("radex-thumb", "Ladle covering compound insulating the steel surface"),
+    "thermocouple-tips-samplers": ("thermocouple-hero", "Disposable thermocouple cartridges and paper tubes"),
 }
 DEFAULT_IMAGE = ("goal-strong-shining-billets", "Freshly cast steel billets")
 
@@ -49,6 +50,7 @@ PRODUCT_PAGES = {
     "castable": ("Refractory Castable", "castable.html"),
     "mortar": ("Mortar", "mortar.html"),
     "ladle-covering-compound": ("Ladle Covering Compound (Radex)", "ladle-covering-compound-radex.html"),
+    "thermocouple-tips-samplers": ("Disposable Thermocouple Tips and Samplers", "thermocouple-tips-samplers.html"),
 }
 
 
