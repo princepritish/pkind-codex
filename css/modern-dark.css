@@ -2299,3 +2299,27 @@ body.has-festive-strip .chatbot-float { bottom: 142px; }
   color: var(--text);
   opacity: 0.72;
 }
+
+/* Authored technical diagrams. Inline SVG rather than a raster: sharp at any
+   size, a few KB, and no licensing question - product photos of thermocouple
+   tips and samplers online belong to other manufacturers. */
+.diagram-figure {
+  margin: 0;
+}
+
+.diagram-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 14px;
+  border: 1px solid var(--panel-border);
+  box-shadow: var(--shadow);
+}
+
+.diagram-figure figcaption {
+  margin-top: 0.7rem;
+  text-align: center;
+  color: var(--text);
+  opacity: 0.72;
+  font-size: 0.92rem;
+}
