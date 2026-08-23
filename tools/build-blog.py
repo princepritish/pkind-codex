@@ -54,6 +54,18 @@ PRODUCT_PAGES = {
 }
 
 
+def webp_source(img_slug, prefix=""):
+    """A <source> only if the WebP actually exists.
+
+    Two posters compress worse as WebP than as JPEG and were deliberately not
+    converted. Emitting a source for a file that is not there makes every
+    WebP-capable browser request it, 404, and show a broken image.
+    """
+    if os.path.exists(os.path.join(ROOT, "img", img_slug + ".webp")):
+        return f'<source type="image/webp" srcset="{prefix}img/{img_slug}.webp">'
+    return ""
+
+
 def read(path):
     with open(path, encoding="utf-8") as fh:
         return fh.read()
@@ -116,7 +128,12 @@ def post_html(p, header, footer, tail):
     pretty = datetime.strptime(p["date"], "%Y-%m-%d").strftime("%d %B %Y")
     # Appending the brand to an already-long headline pushes the title past
     # the ~60 chars Google renders, so only add it when it fits.
-    page_title = esc_title if len(p["title"]) > 45 else f"{esc_title} | PK INDUSTRIES"
+    # "seo_title" overrides the <title> when the headline is too long for the
+    # ~60 characters Google renders. The <h1> always keeps the full headline.
+    if p.get("seo_title"):
+        page_title = html.escape(p["seo_title"])
+    else:
+        page_title = esc_title if len(p["title"]) > 45 else f"{esc_title} | PK INDUSTRIES"
 
     words = len(re.sub(r"<[^>]+>", " ", p["body"]).split())
     minutes = max(1, round(words / 200))
@@ -127,8 +144,11 @@ def post_html(p, header, footer, tail):
     if p.get("image_alt"):
         img_alt = p["image_alt"]
     hero_img = (f'      <figure class="post-hero">\n'
-                f'        <img src="../img/{img_slug}.jpg" alt="{html.escape(img_alt)}" '
+                f'        <picture>\n'
+                f'          {webp_source(img_slug, "../")}\n'
+                f'          <img src="../img/{img_slug}.jpg" alt="{html.escape(img_alt)}" '
                 f'width="960" height="540" fetchpriority="high" decoding="async">\n'
+                f'        </picture>\n'
                 f'      </figure>')
 
     related = ""
@@ -285,12 +305,17 @@ def update_index(posts):
             img_slug, img_alt = PRODUCT_IMAGES.get(p.get("product"), DEFAULT_IMAGE)
             if p.get("image"):
                 img_slug = p["image"]
+            if p.get("image_alt"):
+                img_alt = p["image_alt"]
             words = len(re.sub(r"<[^>]+>", " ", p["body"]).split())
             mins = max(1, round(words / 200))
             date = datetime.strptime(p["date"], "%Y-%m-%d").strftime("%d %b %Y")
             return f'''        <article class="post-card reveal">
           <div class="post-card-media">
-            <img src="img/{img_slug}.jpg" alt="" width="640" height="360" loading="lazy" decoding="async">
+            <picture>
+              {webp_source(img_slug)}
+              <img src="img/{img_slug}.jpg" alt="{html.escape(img_alt)}" width="640" height="360" loading="lazy" decoding="async">
+            </picture>
           </div>
           <div class="post-card-body">
             <p class="post-card-meta"><time datetime="{p["date"]}">{date}</time> &middot; {mins} min read</p>

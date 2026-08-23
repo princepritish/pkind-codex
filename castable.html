@@ -16,8 +16,6 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="canonical" href="https://pkindustries.net/castable.html">
   <link rel="alternate" type="application/rss+xml" title="PK INDUSTRIES Blog" href="/feed.xml">
-  <link rel="alternate" hreflang="en-in" href="https://pkindustries.net/castable.html">
-  <link rel="alternate" hreflang="x-default" href="https://pkindustries.net/castable.html">
 
   <meta property="og:type" content="product">
   <meta property="og:locale" content="en_IN">
@@ -70,6 +68,15 @@
         "name": "Refractory Castable",
         "alternateName": ["Castables", "Refractory Monolithic", "High Alumina Castable", "Furnace Castable", "Monolithic Refractory Castable"],
         "description": "Refractory castable for high temperature furnace and wear-prone steel plant zones, supplied from Jharkhand, India.",
+        "offers": {
+          "@type": "Offer",
+          "url": "https://pkindustries.net/contact.html",
+          "availability": "https://schema.org/InStock",
+          "priceCurrency": "INR",
+          "seller": {"@id": "https://pkindustries.net/#organization"},
+          "areaServed": "IN",
+          "businessFunction": "https://purl.org/goodrelations/v1#Sell"
+        },
         "brand": {"@type": "Brand", "name": "PK INDUSTRIES"},
         "manufacturer": {"@id": "https://pkindustries.net/#organization"},
         "category": "Refractory material",
@@ -183,6 +190,7 @@
             <span>High Wear Zones</span>
           </div>
           <a class="product-link" href="castable-docs.html">Open Technical Handbook</a>
+          <p>Most first-fire failures are a dry-out problem rather than a material problem. <a href="blog/castable-first-heat-up.html">The first heat-up of a refractory castable</a> explains what happens inside the lining and how to build a schedule that survives it, and the <a href="castable-docs.html">Refractory Castable Handbook</a> covers grade selection by wear zone.</p>
         </article>
         <article class="panel spec-card reveal">
           <h2>Typical Specifications</h2>
@@ -320,7 +328,13 @@
         <article class="product-card reveal">
           <picture>
             <source type="image/jpeg" srcset="img/mortar-rs.jpg">
-            <img class="product-thumb" src="img/mortar-rs.jpg" alt="Refractory Mortar product" width="640" height="360" loading="lazy" decoding="async">
+            <picture>
+
+              <source type="image/webp" srcset="img/mortar-rs.webp">
+
+              <img class="product-thumb" src="img/mortar-rs.jpg" alt="Refractory Mortar product" width="640" height="360" loading="lazy" decoding="async">
+
+            </picture>
           </picture>
           <h3>Mortar</h3>
           <p>High-temperature mortar for refractory joint bonding and local repair consistency.</p>

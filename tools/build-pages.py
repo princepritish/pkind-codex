@@ -208,7 +208,7 @@ PAGES = {
     },
     "about.html": {
         "title": "About PK INDUSTRIES, Manufacturing Since 1996",
-        "description": "PK INDUSTRIES manufactures steel melting shop consumables in Adityapur, Jamshedpur, Jharkhand. Established 1996, ISO 9001:2015, supplying across India and for export.",
+        "description": "PK INDUSTRIES manufactures steel melting shop consumables in Adityapur, Jamshedpur. Established 1996, ISO 9001:2015, supplied across India and for export.",
         "eyebrow": "About",
         "h1": "About PK INDUSTRIES",
         "lead": "A consumables manufacturer in Adityapur, Jamshedpur, Jharkhand, working in one product family since 1996.",
@@ -218,7 +218,7 @@ PAGES = {
     },
     "exports.html": {
         "title": "Steel Plant Consumables Export, Jamshedpur, India",
-        "description": "PK INDUSTRIES accepts export enquiries for casting powder, nozzle filling compound, refractory castable, mortar and ladle covering compound from Jamshedpur, India.",
+        "description": "Export enquiries for casting powder, nozzle filling compound, castable, mortar and ladle covering compound from Jamshedpur, India.",
         "eyebrow": "Exports",
         "h1": "Export enquiries",
         "lead": "Steel melting shop consumables manufactured in Jharkhand, India, for buyers outside India.",
@@ -279,8 +279,6 @@ def page_html(name, p, nav, footer, tail):
   <title>{p['title']}</title>
   <link rel="canonical" href="{url}">
   <link rel="alternate" type="application/rss+xml" title="PK INDUSTRIES Blog" href="/feed.xml">
-  <link rel="alternate" hreflang="en-in" href="{url}">
-  <link rel="alternate" hreflang="x-default" href="{url}">
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_IN">

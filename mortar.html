@@ -16,8 +16,6 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="canonical" href="https://pkindustries.net/mortar.html">
   <link rel="alternate" type="application/rss+xml" title="PK INDUSTRIES Blog" href="/feed.xml">
-  <link rel="alternate" hreflang="en-in" href="https://pkindustries.net/mortar.html">
-  <link rel="alternate" hreflang="x-default" href="https://pkindustries.net/mortar.html">
 
   <meta property="og:type" content="product">
   <meta property="og:locale" content="en_IN">
@@ -70,6 +68,15 @@
         "name": "Refractory Mortar",
         "alternateName": ["Mortar", "High Temperature Mortar", "Furnace Mortar", "Refractory Jointing Mortar"],
         "description": "Refractory Mortar for lining jointing, patching, and hot-zone maintenance in steel plant furnace and ladle applications.",
+        "offers": {
+          "@type": "Offer",
+          "url": "https://pkindustries.net/contact.html",
+          "availability": "https://schema.org/InStock",
+          "priceCurrency": "INR",
+          "seller": {"@id": "https://pkindustries.net/#organization"},
+          "areaServed": "IN",
+          "businessFunction": "https://purl.org/goodrelations/v1#Sell"
+        },
         "brand": {"@type": "Brand", "name": "PK INDUSTRIES"},
         "manufacturer": {"@id": "https://pkindustries.net/#organization"},
         "category": "Refractory material",
@@ -159,7 +166,13 @@
       <figure class="hero-visual reveal">
         <picture>
           <source type="image/jpeg" srcset="img/mortar-rs.jpg">
-          <img src="img/mortar-rs.jpg" alt="Industrial furnace and steel plant hot-zone operation" width="960" height="540" fetchpriority="high" decoding="async">
+          <picture>
+
+            <source type="image/webp" srcset="img/mortar-rs.webp">
+
+            <img src="img/mortar-rs.jpg" alt="Industrial furnace and steel plant hot-zone operation" width="960" height="540" fetchpriority="high" decoding="async">
+
+          </picture>
         </picture>
         <figcaption class="trust-badge-row" aria-label="PK INDUSTRIES trust badges">
           <img class="trust-badge-img" src="img/pk-30-years-badge.webp" alt="PK INDUSTRIES 30 years since 1996 badge" width="148" height="148" loading="lazy">
@@ -183,6 +196,7 @@
             <span>High Temperature Use</span>
           </div>
           <a class="product-link" href="documentation.html">Open Documentation Hub</a>
+          <p>Joint strength is decided at the mixing board, not on the trowel. <a href="blog/mixing-refractory-mortar.html">Mixing refractory mortar and getting joint thickness right</a> sets out water control, consistency and the shortcuts that weaken a joint.</p>
         </article>
         <article class="panel spec-card reveal">
           <h2>Typical Specifications</h2>
