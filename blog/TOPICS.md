@@ -27,7 +27,6 @@ world rather than about our own products.
 
 ## Queue
 
-- [ ] SOP: Running a monthly free-opening audit and acting on the number
 - [ ] Casting powder vs mould flux vs mould powder — the same product, three names
 - [ ] Choosing between 60% and 90% alumina castable by wear zone
 - [ ] Nozzle filling compound vs plain chromite sand
@@ -43,6 +42,7 @@ world rather than about our own products.
 
 ## Published
 
+- [x] 2026-08-25 — Running a Monthly Free-Opening Audit and Acting on the Number (SOP, NFC)
 - [x] 2026-06-30 — Casting Powder Feeding Practice and Controlling Slag Pool Depth (SOP, casting powder)
 - [x] 2026-07-07 — Mixing Refractory Mortar and Getting Joint Thickness Right (SOP, mortar)
 - [x] 2026-08-11 — Receiving and Inspecting a Consumables Delivery (SOP, goods inward)

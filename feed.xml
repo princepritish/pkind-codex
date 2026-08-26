@@ -6,7 +6,14 @@
     <atom:link href="https://pkindustries.net/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Practical technical articles on casting powder, nozzle filling compound, refractory castable, mortar and ladle covering compound.</description>
     <language>en-in</language>
-    <lastBuildDate>Sun, 23 Aug 2026 20:15:19 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 26 Aug 2026 18:18:25 +0000</lastBuildDate>
+    <item>
+      <title>Running a Monthly Free-Opening Audit and Acting on the Number</title>
+      <link>https://pkindustries.net/blog/monthly-free-opening-audit.html</link>
+      <guid isPermaLink="true">https://pkindustries.net/blog/monthly-free-opening-audit.html</guid>
+      <description>Free opening is the one ladle number worth tracking every month. How to count it honestly, what the pattern means, and what to change first.</description>
+      <pubDate>Tue, 25 Aug 2026 09:00:00 +0530</pubDate>
+    </item>
     <item>
       <title>Getting a Reliable First Read from a Disposable Thermocouple Tip</title>
       <link>https://pkindustries.net/blog/thermocouple-first-read-success.html</link>
